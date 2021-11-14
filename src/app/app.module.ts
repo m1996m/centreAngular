@@ -30,8 +30,6 @@ import { NavbarComponent } from './navbar/navbar.component';
   declarations: [
     AppComponent,
     HeaderComponent,
-    SidebarComponent,
-    NavbarComponent,
     TypeProduitCreateComponent,
     TypeProduitIndexComponent,
     TypeProduitShowComponent,
