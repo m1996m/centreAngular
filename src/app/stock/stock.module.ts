@@ -1,31 +1,34 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { CentreRoutingModule } from './centre-routing.module';
-import { CentreComponent } from './centre.component';
+import { StockRoutingModule } from './stock-routing.module';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { FooterComponent } from '../footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CentreIndexComponent } from './centre-index/centre-index.component';
-import { CentreEditComponent } from './centre-edit/centre-edit.component';
-import { CentreShowComponent } from './centre-show/centre-show.component';
+import { StockCreateComponent } from './stock-create/stock-create.component';
+import { StockEditComponent } from './stock-edit/stock-edit.component';
+import { StockShowComponent } from './stock-show/stock-show.component';
+import { StockComponent } from './stock.component';
+
+
 
 
 @NgModule({
   declarations: [
-    CentreComponent,
+    StockComponent,
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
-    CentreIndexComponent,
-    CentreEditComponent,
-    CentreShowComponent
+    StockCreateComponent,
+    StockEditComponent,
+    StockShowComponent,
   ],
   imports: [
     CommonModule,
-    CentreRoutingModule,
+    StockRoutingModule,
     ReactiveFormsModule,
+    
   ]
 })
-export class CentreModule { }
+export class StockModule { }

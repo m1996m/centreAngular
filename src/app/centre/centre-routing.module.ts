@@ -8,8 +8,8 @@ import { CentreEditComponent } from './centre-edit/centre-edit.component';
 const routes: Routes = [
   { path: '', component: CentreIndexComponent },
   { path: 'create', component: CentreComponent },
-  { path: 'show/:id', component: CentreShowComponent },
   { path: 'edit/:id', component: CentreEditComponent },
+  { path: 'show/:id', component: CentreShowComponent },
 ];
 
 @NgModule({
