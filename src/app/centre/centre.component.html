@@ -1,0 +1,169 @@
+<body class="hold-transition sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+ 
+<app-navbar></app-navbar>
+  <!-- Main Sidebar Container -->
+<app-sidebar></app-sidebar>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Blank Page</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Blank Page</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title" style="text-align: center;">Ajout Centre</h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="container">
+            <form [formGroup]="form" (ngSubmit)="Enregistrer()">
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="nom">Nom</label>
+                  <input type="text" formControlName="nom" id="nom" placeholder="Saisir le nom du centre" class="form-control">
+                  <div *ngIf="form.get('nom').invalid && (form.dirty || form.touched)"class="alert alert-danger">
+                    <div *ngIf="form.get('nom').hasError('required')">
+                      nom doit etre renseigner.
+                    </div>
+                    <div *ngIf=" form.get('nom').hasError('minlength')">
+                      nom minimum 3 caracteres.
+                    </div>
+                    <div *ngIf=" form.get('nom').hasError('maxlength')">
+                      nom maximum 20 caracteres.
+                    </div>
+                  </div>
+                  <label for="adresse">Adresse</label>
+                  <input type="text" formControlName="adresse" id="adresse" placeholder="Saisir le adresse du centre" class="form-control">
+                  <div *ngIf="form.get('adresse').invalid && (form.dirty || form.touched)"class="alert alert-danger">
+                    <div *ngIf="form.get('adresse').hasError('required')">
+                      adresse doit etre renseigner.
+                    </div>
+                    <div *ngIf=" form.get('adresse').hasError('minlength')">
+                      adresse minimum 5 caracteres.
+                    </div>
+                  </div>
+                  <label for="email">Email</label>
+                  <input type="text" (blur)="onblur()" formControlName="email" id="email" placeholder="Saisir l'email du centre" class="form-control">
+                  <div *ngIf="(form.get('email').invalid || dataEmail.id>0) && (form.dirty || form.touched)"class="alert alert-danger">
+                    <div *ngIf="form.get('email').hasError('required')">
+                      email doit etre renseigner.
+                    </div>
+                    <div *ngIf=" form.get('email').hasError('minlength')">
+                      email minimum 8 caracteres.
+                    </div>
+                    <div *ngIf=" form.get('email').hasError('minlength')">
+                      email maximum 40 caracteres.
+                    </div>
+                    <div *ngIf=" form.get('email').hasError('maxlength')">
+                      email maximum 50 caracteres.
+                    </div>
+                    <div *ngIf=" form.get('email').hasError('email')">
+                      Ce champ doit etre de format email(exemple@gmail.com ou exemple@gmail.fr)
+                    </div>
+                    <div *ngIf="dataEmail.id>0">
+                      Cet email existe deja
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="tel">Tel</label>
+                  <input type="text" (blur)="onblurTel()" formControlName="tel" id="tel" placeholder="Saisir le tel du centre" class="form-control">
+                  <div *ngIf="(form.get('tel').invalid || dataTel.id>0) && (form.dirty || form.touched)" class="alert alert-danger">
+                    <div *ngIf="form.get('tel').hasError('required')">
+                      Tel doit etre renseigner.
+                    </div>
+                    <div *ngIf=" form.get('tel').hasError('minlength')">
+                      telephone minimum 8 caracteres.
+                    </div>
+                    <div *ngIf="dataTel.id>0">
+                      Ce numero de telephone existe deja
+                    </div>
+                  </div>
+                  <label for="pays">Pays</label>
+                  <input type="text" formControlName="pays" id="pays" placeholder="Saisir le pays où se trouvve le centre" class="form-control">
+                  <div *ngIf="form.get('pays').invalid && (form.dirty || form.touched)"class="alert alert-danger">
+                    <div *ngIf="form.get('pays').hasError('required')">
+                      Champ doit etre renseigner.
+                    </div>
+                    <div *ngIf=" form.get('adresse').hasError('minlength')">
+                      champ minimum 5 caracteres.
+                    </div>
+                    <div *ngIf=" form.get('adresse').hasError('maxlength')">
+                      champ maximum 20 caracteres.
+                    </div>
+                  </div>
+                  <label for="ville">Ville</label>
+                  <input type="text" formControlName="ville" id="ville" placeholder="Saisir la ville où se trouvve le centre" class="form-control">
+                  <div *ngIf="form.get('ville').invalid && (form.dirty || form.touched)"class="alert alert-danger">
+                    <div *ngIf="form.get('ville').hasError('required')">
+                      ce champ doit etre renseigner.
+                    </div>
+                    <div *ngIf=" form.get('ville').hasError('minlength')">
+                      ce champ minimum 5 caracteres.
+                    </div>
+                    <div *ngIf=" form.get('ville').hasError('maxlength')">
+                      ce champ maximum 20 caracteres.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-4">
+                  <input type="submit" [disabled]="dataEmail.id>0 || dataTel.id>0" value="Enregistrer" class="btn btn-primary">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+          Footer
+        </div>
+        <!-- /.card-footer-->
+      </div>
+      <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+ <app-footer></app-footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+
+

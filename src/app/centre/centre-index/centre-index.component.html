@@ -1,0 +1,143 @@
+<body class="hold-transition sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+     
+    <app-navbar></app-navbar>
+      <!-- Main Sidebar Container -->
+    <app-sidebar></app-sidebar>
+    
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>Blank Page</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item active">Blank Page</li>
+                </ol>
+              </div>
+            </div>
+          </div><!-- /.container-fluid -->
+        </section>
+    
+        <!-- Main content -->
+        <section class="content">
+    
+          <!-- Default box -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title" style="text-align: center;">index Centre</h3>
+    
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="container">
+                <!--  Affichage de la recherche  -->
+                    <form [formGroup]="form" (ngSubmit)="getSearch()">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" formControlName="content" placeholder="rechercher en fonction du nom ou pays ou tel ou email ou ville" id="content">
+                            </div>
+                            <div class="col-md-3">
+                                <input type="submit" class="btn btn-primary">
+                            </div>
+                        </div>
+                    </form>
+                    <br>
+                    <div *ngIf="centre.id>0" id="search">
+                        <div class="row">
+                            <div class="container">
+                                <div class="card">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                Nom:{{centre.nom}}
+                                                Adresse:{{centre.adresse}}
+                                                Pays:{{centre.ville}}
+                                            </div>
+                                            <div class="col-md-6">
+                                                Tel:{{centre.tel}}
+                                                Email:{{centre.email}}
+                                                Ville:{{centre.ville}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <a routerLink="/centre/show/{{centre.id}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <!--  Affichage de la recherche-->
+                <!--Affichage L'ensemble des centres-->
+                <div class="row" id="centre">
+                    <div class="col-md-6" *ngFor="let cent of centres;let i=index">
+                        <div class="card">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h3 style="text-align: center;" >{{cent.nom}}</h3>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4>Adresse: {{cent.adresse}}</h4>
+                                        <h4>Tel: {{cent.tel}}</h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4>Pays: {{cent.ville}}</h4>
+                                        <h4>Ville: {{cent.ville}}</h4> 
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <a routerLink="/centre/show/{{cent.id}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                        </div>
+                    </div>
+                </div>
+                <!--Affichage L'ensemble des centres-->
+              </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+              Footer
+            </div>
+            <!-- /.card-footer-->
+          </div>
+          <!-- /.card -->
+    
+        </section>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+    
+     <app-footer></app-footer>
+    
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+      <!-- /.control-sidebar -->
+    </div>
