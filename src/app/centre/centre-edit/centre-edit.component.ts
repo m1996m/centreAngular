@@ -13,13 +13,12 @@ export class CentreEditComponent implements OnInit {
 
   centres:CentreModel=new CentreModel(0,'','','','','','','');
   form:any;
-  dataEmail:CentreModel=new CentreModel(0,'','','','','','','');
-  dataTel:CentreModel=new CentreModel(0,'','','','','','','');
+  dataEmail:any;
+  dataTel:any;
   id:number=0;
   constructor(private centreService:CentreService,private fb:FormBuilder,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.initForm();
     this.id=this.route.snapshot.params['id'];
     this.centreService.getOneCentre(this.id).subscribe((data:any)=>{this.centres=data})
     this.initForm();

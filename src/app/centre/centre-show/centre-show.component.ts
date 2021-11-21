@@ -11,8 +11,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CentreShowComponent implements OnInit {
 
-  centres:CentreModel=new CentreModel(0,'','','','','','','');
-  centre:CentreModel=new CentreModel(0,'','','','','','','');
+  centres:any;
+  centre:any;
   id:number=0;
   constructor(private router:Router, private centreService:CentreService,private fb:FormBuilder,private route:ActivatedRoute) { }
 

@@ -18,23 +18,19 @@ import { TypeRayonService } from './services/type-rayon.service';
 import { UserService } from './services/user.service';
 import { VenteService } from './services/vente.service';
 import { ReactiveFormsModule, NgModel } from '@angular/forms';
-import { TypeProduitCreateComponent } from './typeProduit/type-produit-create/type-produit-create.component';
-import { TypeProduitIndexComponent } from './typeProduit/type-produit-index/type-produit-index.component';
-import { TypeProduitShowComponent } from './typeProduit/type-produit-show/type-produit-show.component';
-import { TypeProduitEditComponent } from './typeProduit/type-produit-edit/type-produit-edit.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { StockComponent } from './stock/stock.component';
+import { ProduitComponent } from './produit/produit.component';
+import { ProduitStockComponent } from './produit-stock/produit-stock.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    TypeProduitCreateComponent,
-    TypeProduitIndexComponent,
-    TypeProduitShowComponent,
-    TypeProduitEditComponent,
-
+    StockComponent,
+    ProduitComponent,
+    ProduitStockComponent,    
   ],
   imports: [
     BrowserModule,

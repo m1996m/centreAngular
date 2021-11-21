@@ -11,24 +11,37 @@ import { Router } from '@angular/router';
 })
 export class CentreIndexComponent implements OnInit {
   centres:any;
-  centre:CentreModel=new CentreModel(0,'','','','','','','');
+  centre:any;
   form:any;
+  isTrue:boolean=true;
   constructor(private centreServiece: CentreService,private fb:FormBuilder,private router:Router) { }
 
   ngOnInit(): void {
     this.getCentre();
     this.form=this.fb.group({
-      content:[this.centre.content]
+      content:['']
     });
+    console.log(this.centre);
   }
 
   getCentre(){
     this.centreServiece.getAllCentre().subscribe((data:any)=>{this.centres=data})
   }
   getSearch(){
+    if(this.isTrue){
+      this.isTrue=false;
+    }else{
+      this.isTrue=true;
+    }
     this.centreServiece.getSearch(this.form.value).subscribe((data:any)=>{ 
       this.centre=data;
-      console.log(this.centre);
     });
+  }
+  getIsTrue(){
+    if(this.isTrue){
+      this.isTrue=false;
+    }else{
+      this.isTrue=true;
+    }
   }
 }

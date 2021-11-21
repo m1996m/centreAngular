@@ -44,6 +44,12 @@
         </div>
         <div class="card-body">
           <div class="container">
+            <div class="row">
+              <div class="col-md-4">
+                  <a routerLink="/centre" class="btn btn-primary">Les centres</a>
+              </div> 
+            </div>
+            <br>
             <form [formGroup]="form" (ngSubmit)="Enregistrer()">
               <div class="row">
                 <div class="col-md-6">
@@ -72,7 +78,7 @@
                   </div>
                   <label for="email">Email</label>
                   <input type="text" (blur)="onblur()" formControlName="email" id="email" placeholder="Saisir l'email du centre" class="form-control">
-                  <div *ngIf="(form.get('email').invalid || dataEmail.id>0) && (form.dirty || form.touched)"class="alert alert-danger">
+                  <div *ngIf="(form.get('email').invalid || dataEmail) && (form.dirty || form.touched)"class="alert alert-danger">
                     <div *ngIf="form.get('email').hasError('required')">
                       email doit etre renseigner.
                     </div>
@@ -88,7 +94,7 @@
                     <div *ngIf=" form.get('email').hasError('email')">
                       Ce champ doit etre de format email(exemple@gmail.com ou exemple@gmail.fr)
                     </div>
-                    <div *ngIf="dataEmail.id>0">
+                    <div *ngIf="dataEmail">
                       Cet email existe deja
                     </div>
                   </div>
@@ -96,14 +102,14 @@
                 <div class="col-md-6">
                   <label for="tel">Tel</label>
                   <input type="text" (blur)="onblurTel()" formControlName="tel" id="tel" placeholder="Saisir le tel du centre" class="form-control">
-                  <div *ngIf="(form.get('tel').invalid || dataTel.id>0) && (form.dirty || form.touched)" class="alert alert-danger">
+                  <div *ngIf="(form.get('tel').invalid || dataTel) && (form.dirty || form.touched)" class="alert alert-danger">
                     <div *ngIf="form.get('tel').hasError('required')">
                       Tel doit etre renseigner.
                     </div>
                     <div *ngIf=" form.get('tel').hasError('minlength')">
                       telephone minimum 8 caracteres.
                     </div>
-                    <div *ngIf="dataTel.id>0">
+                    <div *ngIf="dataTel">
                       Ce numero de telephone existe deja
                     </div>
                   </div>
@@ -138,7 +144,7 @@
               <br>
               <div class="row">
                 <div class="col-md-4">
-                  <input type="submit" [disabled]="dataEmail.id>0 || dataTel.id>0" value="Enregistrer" class="btn btn-primary">
+                  <input type="submit" [disabled]="dataEmail || dataTel" value="Enregistrer" class="btn btn-primary">
                 </div>
               </div>
             </form>

@@ -45,6 +45,12 @@
             <div class="card-body">
               <div class="container">
                 <!--  Affichage de la recherche  -->
+                   <div class="row">
+                      <div class="col-md-4">
+                          <a routerLink="/centre/create" class="btn btn-primary">Ajout</a>
+                      </div> 
+                    </div>
+                    <br>
                     <form [formGroup]="form" (ngSubmit)="getSearch()">
                         <div class="row">
                             <div class="col-md-9">
@@ -56,38 +62,45 @@
                         </div>
                     </form>
                     <br>
-                    <div *ngIf="centre.id>0" id="search">
+                    <div *ngIf="centre" id="search" [hidden]="isTrue">
                         <div class="row">
                             <div class="container">
-                                <div class="card">
+                              <div class="row">
+                                <div class="col-md-8" *ngFor="let cent of centre">
+                                  <div class="card">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                Nom:{{centre.nom}}
-                                                Adresse:{{centre.adresse}}
-                                                Pays:{{centre.ville}}
+                                                <h5>Nom:{{cent.nom}}</h5> 
+                                                <h5>Adresse:{{cent.adresse}}</h5> 
+                                                <h5>Pays:{{cent.ville}}</h5> 
                                             </div>
                                             <div class="col-md-6">
-                                                Tel:{{centre.tel}}
-                                                Email:{{centre.email}}
-                                                Ville:{{centre.ville}}
+                                              <h5>Tel:{{cent.tel}}</h5> 
+                                              <h5>Email:{{cent.email}}</h5> 
+                                              <h5>Ville:{{cent.ville}}</h5> 
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <a routerLink="/centre/show/{{centre.id}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+                                                <a routerLink="/centre/show/{{cent.id}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
                                             </div>
+                                            <div class="col-md-4">
+                                              <a (click)="getIsTrue()" routerLink="/centre" class="btn btn-primary">Retour</a>
+                                          </div>                                           
                                         </div>
                                     </div>
                                 </div>
+                                </div>
+                              </div>
                             </div>
                         </div>
                     </div>
 
                 <!--  Affichage de la recherche-->
                 <!--Affichage L'ensemble des centres-->
-                <div class="row" id="centre">
-                    <div class="col-md-6" *ngFor="let cent of centres;let i=index">
+                <div class="row" id="centre" [hidden]="!isTrue">
+                    <div class="col-md-6" *ngFor="let cent of centres;let i=index" >
                         <div class="card">
                             <div class="container">
                                 <div class="row">

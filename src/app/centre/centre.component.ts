@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CentreService } from '../services/centre.service';
 import { CentreModel } from '../Models/centre-model.Model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-centre',
@@ -11,9 +12,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class CentreComponent implements OnInit {
   centres:CentreModel=new CentreModel(0,'','','','','','','');
   form:any;
-  dataEmail:CentreModel=new CentreModel(0,'','','','','','','');
-  dataTel:CentreModel=new CentreModel(0,'','','','','','','');
-  constructor(private centreService:CentreService,private fb:FormBuilder) { }
+  dataEmail:any;
+  dataTel:any;
+  constructor(private centreService:CentreService,private fb:FormBuilder,private router:Router) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -31,7 +32,7 @@ export class CentreComponent implements OnInit {
   }
 
   Enregistrer(){
-    this.centreService.createCentre(this.form.value).subscribe((data:any)=>{});
+    this.centreService.createCentre(this.form.value).subscribe((data:any)=>{this.router.navigate(['/centre'])});
   }
   onblur(){
     this.dataEmail.id=0;

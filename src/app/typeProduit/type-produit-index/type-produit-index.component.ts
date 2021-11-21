@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { TypeProduitService } from '../../services/type-produit.service';
+import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-type-produit-index',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TypeProduitIndexComponent implements OnInit {
 
-  constructor() { }
+  types:any;
+  constructor(private typeService: TypeProduitService,private fb:FormBuilder,private router:Router) { }
 
   ngOnInit(): void {
+    this.gettype();
+  }
+
+  gettype(){
+    this.typeService.getAllTypeProduit().subscribe((data:any)=>{this.types=data})
   }
 
 }

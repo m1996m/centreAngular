@@ -11,37 +11,36 @@ export class CentreService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('token')}`
     })
   };
 
   constructor(private http:HttpClient ) { }
 
   getAllCentre() {
-    return this.http.get(this.global+'centre', this.httpOptions);
+    return this.http.get(this.global+'centre');
   }
   createCentre(centre:CentreModel) {
-    return this.http.post(this.global+'centre/new',centre, this.httpOptions);
+    return this.http.post(this.global+'centre/new',centre);
   }
 
   verificationUniciteEmail(email:CentreModel) {
-    return this.http.post(this.global+'verificationUniciteEmail',email, this.httpOptions);
+    return this.http.post(this.global+'verificationUniciteEmail',email);
   }
 
   getSearch(centre:CentreModel) {
-    return this.http.post(this.global+'rechercherCentre',centre, this.httpOptions);
+    return this.http.post(this.global+'rechercherCentre',centre);
   }
 
   verificationUniciteTEl(tel:CentreModel) {
-    return this.http.post(this.global+'verificationUniciteTelCentre',tel, this.httpOptions);
+    return this.http.post(this.global+'verificationUniciteTelCentre',tel);
   }
   getOneCentre(id:number){
-    return this.http.get(this.global+'getOneCentre/'+id,this.httpOptions);
+    return this.http.get(this.global+'getOneCentre/'+id);
   }
   editCentre(id:number, centre:CentreModel){
-    return this.http.post(this.global+'getAndOrEditCentre/'+id,centre,this.httpOptions);
+    return this.http.post(this.global+'getAndOrEditCentre/'+id,centre);
   }
   deleteCentre(id:number){
-    return this.http.delete(this.global+'getDeleteCentre/'+id,this.httpOptions);
+    return this.http.delete(this.global+'getDeleteCentre/'+id);
   }
 }

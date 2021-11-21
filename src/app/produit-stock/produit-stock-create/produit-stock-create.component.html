@@ -1,0 +1,122 @@
+<body class="hold-transition sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+     
+      <!-- Main Sidebar Container -->
+    
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>Blank Page</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                  <li class="breadcrumb-item active">Blank Page</li>
+                </ol>
+              </div>
+            </div>
+          </div><!-- /.container-fluid -->
+        </section>
+    
+        <!-- Main content -->
+        <section class="content">
+    
+          <!-- Default box -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title" style="text-align: center;">Ajout produitStock</h3>
+    
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-4">
+                      <a routerLink="/produit/stock" class="btn btn-primary">Les produit</a>
+                  </div> 
+                  <div class="col-md-4">
+                    <a (click)="onClick()" class="btn btn-primary" routerLink="" >Ajouter Fournisseur</a>
+                </div> 
+                </div>
+                <br>
+                <!-- Ajout produit stock-->
+                <form [formGroup]="form" (ngSubmit)="Enregistrer()">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label for="produit">Produit</label>
+                      <select (blur)="blurProduit()" class="form-control" formControlName="produit" id="produit" >
+                          <option *ngFor="let produit of produits" value="{{produit.id}}" id="produit">{{produit.designation}}{{produit.type.type}}</option>
+                      </select>
+                      <div *ngFor="let prod of dataproduit">
+                          <label for="pua">PUA</label>
+                          <input type="text" formControlName="pua" id="pua" value="{{prod.pua}}" class="form-control">
+                          <div *ngIf="form.get('pua').invalid && (form.dirty || form.touched)"class="alert alert-danger">
+                            <div *ngIf="form.get('pua').hasError('required')">
+                              pua doit etre renseigner.
+                            </div>
+                          </div>
+                          <label for="puv">PUV</label>
+                          <input type="text" formControlName="puv" id="puv" value="{{prod.puv}}" class="form-control">
+                          <div *ngIf="form.get('puv').invalid && (form.dirty || form.touched)"class="alert alert-danger">
+                            <div *ngIf="form.get('puv').hasError('required')">
+                              puv doit etre renseigner.
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="fournisseur">Fournisseur</label>
+                      <select class="form-control"  formControlName="fournisseur" id="fournisseur" >
+                          <option *ngFor="let fournisseur of fournisseurs" value="{{fournisseur.id}}" id="fournisseur">{{fournisseur.nom}}/{{fournisseur.adresse}}</option>
+                      </select>
+                      <label for="stock">Stock</label>
+                      <select class="form-control" formControlName="stock" id="stock" >
+                          <option *ngFor="let stock of stocks" value="{{stock?.id}}" id="stock">{{stock?.nom}}/{{stock?.adresse}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <input type="submit" value="Enregistrer" class="btn btn-primary">
+                    </div>
+                  </div>
+              </form>
+                 <!-- Ajout produit stock-->
+              </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+              Footer
+            </div>
+            <!-- /.card-footer-->
+          </div>
+          <!-- /.card -->
+    
+        </section>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+    
+    
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+      <!-- /.control-sidebar -->
+    </div>
+    
+    
+    

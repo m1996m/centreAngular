@@ -72,7 +72,7 @@
                     </div>
                     <label for="email">Email</label>
                     <input type="text" ( formControlName="email" id="email" placeholder="Saisir l'email du centre" class="form-control">
-                    <div *ngIf="(form.get('email').invalid || dataEmail.id>0) && (form.dirty || form.touched)"class="alert alert-danger">
+                    <div *ngIf="(form.get('email').invalid || dataEmail) && (form.dirty || form.touched)"class="alert alert-danger">
                       <div *ngIf="form.get('email').hasError('required')">
                         email doit etre renseigner.
                       </div>
@@ -88,7 +88,7 @@
                       <div *ngIf=" form.get('email').hasError('email')">
                         Ce champ doit etre de format email(exemple@gmail.com ou exemple@gmail.fr)
                       </div>
-                      <div *ngIf="dataEmail.id>0">
+                      <div *ngIf="dataEmail">
                         Cet email existe deja
                       </div>
                     </div>
@@ -96,14 +96,14 @@
                   <div class="col-md-6">
                     <label for="tel">Tel</label>
                     <input type="text"  formControlName="tel" id="tel" placeholder="Saisir le tel du centre" class="form-control">
-                    <div *ngIf="(form.get('tel').invalid || dataTel.id>0) && (form.dirty || form.touched)" class="alert alert-danger">
+                    <div *ngIf="(form.get('tel').invalid || dataTel) && (form.dirty || form.touched)" class="alert alert-danger">
                       <div *ngIf="form.get('tel').hasError('required')">
                         Tel doit etre renseigner.
                       </div>
                       <div *ngIf=" form.get('tel').hasError('minlength')">
                         telephone minimum 8 caracteres.
                       </div>
-                      <div *ngIf="dataTel.id>0">
+                      <div *ngIf="dataTel">
                         Ce numero de telephone existe deja
                       </div>
                     </div>

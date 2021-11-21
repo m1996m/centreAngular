@@ -1,0 +1,139 @@
+<body class="hold-transition sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+     
+      <!-- Main Sidebar Container -->
+    
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>Blank Page</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                  <li class="breadcrumb-item active">Blank Page</li>
+                </ol>
+              </div>
+            </div>
+          </div><!-- /.container-fluid -->
+        </section>
+    
+        <!-- Main content -->
+        <section class="content">
+    
+          <!-- Default box -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title" style="text-align: center;">Ajout produit</h3>
+    
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-4">
+                      <a routerLink="/produit" class="btn btn-primary">Les types produits</a>
+                  </div> 
+                </div>
+                <br>
+                <form [formGroup]="form" (ngSubmit)="Enregistrer()">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label for="designation">designation</label>
+                      <input type="text" (blur)="onblur()" formControlName="designation" id="designation" placeholder="Saisir le designation du centre" class="form-control">
+                      <div *ngIf="(form.get('designation').invalid || dataNOm) && (form.dirty || form.touched)"class="alert alert-danger">
+                        <div *ngIf="form.get('designation').hasError('required')">
+                          designation doit etre renseigner.
+                        </div>
+                        <div *ngIf=" form.get('designation').hasError('minlength')">
+                          designation minimum 3 caracteres.
+                        </div>
+                        <div *ngIf=" form.get('designation').hasError('maxlength')">
+                          designation maximum 20 caracteres.
+                        </div>
+                        <div *ngIf="dataNOm">
+                            Ce produit possedant ce type existe deja
+                          </div>
+                      </div>
+                      <label for="adresse">PUA</label>
+                      <input type="text" formControlName="pua" id="pua" placeholder="Saisir le pua du centre" class="form-control">
+                      <div *ngIf="form.get('pua').invalid && (form.dirty || form.touched)"class="alert alert-danger">
+                        <div *ngIf="form.get('pua').hasError('required')">
+                          pua doit etre renseigner.
+                        </div>
+                        <div *ngIf=" form.get('pua').hasError('minlength')">
+                          pua minimum 5 caracteres.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="type">Type</label>
+                      <select formControlName="type"  (blur)="onblur()" class="form-control"> 
+                          <option *ngFor="let type of types" value="{{type.id}}">{{type.type}}</option>
+                      </select>
+                      <div *ngIf="(form.get('type').invalid || dataNOm) && (form.dirty || form.touched)" class="alert alert-danger">
+                        <div *ngIf="form.get('type').hasError('required')">
+                          Type doit etre renseigner.
+                        </div>
+                        <div *ngIf="dataNOm">
+                            Ce produit possedant ce type existe deja
+                        </div>
+                      </div>
+                      <label for="puv">PUV</label>
+                      <input type="text" formControlName="puv" id="puv" placeholder="Saisir le puv où se trouvve le centre" class="form-control">
+                      <div *ngIf="form.get('puv').invalid && (form.dirty || form.touched)"class="alert alert-danger">
+                        <div *ngIf="form.get('puv').hasError('required')">
+                          Champ doit etre renseigner.
+                        </div>
+                        <div *ngIf=" form.get('pua').hasError('minlength')">
+                          champ minimum 1 caracteres.
+                        </div>
+                        <div *ngIf=" form.get('adresse').hasError('maxlength')">
+                          champ maximum 7 caracteres.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <input type="submit" [disabled]="dataNOm" value="Enregistrer" class="btn btn-primary">
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+              Footer
+            </div>
+            <!-- /.card-footer-->
+          </div>
+          <!-- /.card -->
+    
+        </section>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+        
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+      <!-- /.control-sidebar -->
+    </div>
+    
+    
+    
