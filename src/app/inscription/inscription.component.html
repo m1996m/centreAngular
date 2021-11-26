@@ -1,16 +1,15 @@
 <body class="hold-transition register-page">
     <div class="register-box">
       <div class="register-logo">
-        <a href="../../index2.html"><b>Admin</b>LTE</a>
+        <a href="#"><b>Administrateur</b>LTE</a>
       </div>
-    
       <div class="card">
         <div class="card-body register-card-body">
-          <p class="login-box-msg">Register a new membership</p>
+          <p class="login-box-msg">Ajout Utilisateur</p>
     
-          <form action="../../index.html" method="post">
+          <form [formGroup]="form" (ngSubmit)="Enregistrer()">
             <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Full name">
+              <input type="text" class="form-control" formControlName="nom" placeholder="Nom">
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-user"></span>
@@ -18,15 +17,37 @@
               </div>
             </div>
             <div class="input-group mb-3">
-              <input type="email" class="form-control" placeholder="Email">
+              <input type="text" class="form-control" formControlName="prenom" placeholder="Prenom">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-user"></span>
+                </div>
+              </div>
+            </div>
+            <div class="input-group mb-3">
+              <input type="text" (blur)="onblurTel()" class="form-control" formControlName="tel" placeholder="Tel">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-phone"></span>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="dataTel" class="altert alert-danger">
+              <h5>Numero de telephone existe dejà</h5>
+            </div>
+            <div class="input-group mb-3">
+              <input type="email" (blur)="onblurEmail()" class="form-control" formControlName="email" placeholder="Email">
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-envelope"></span>
                 </div>
               </div>
             </div>
+            <div *ngIf="dataEmail" class="altert alert-danger">
+              <h5>Email existe dejà</h5>
+            </div>
             <div class="input-group mb-3">
-              <input type="password" class="form-control" placeholder="Password">
+              <input type="password" class="form-control" formControlName="password" placeholder="Password">
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-lock"></span>
@@ -34,15 +55,18 @@
               </div>
             </div>
             <div class="input-group mb-3">
-              <input type="password" class="form-control" placeholder="Retype password">
+              <input type="password" (blur)="onblurConfirmation()" class="form-control" formControlName="confirmation" placeholder="Confirmation">
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-lock"></span>
                 </div>
               </div>
+            </div>
+            <div *ngIf="isTrue" class="altert alert-danger">
+              <h5>Mot de passe different de la confirmation</h5>
             </div>
             <div class="row">
-              <div class="col-8">
+              <div class="col-7">
                 <div class="icheck-primary">
                   <input type="checkbox" id="agreeTerms" name="terms" value="agree">
                   <label for="agreeTerms">
@@ -51,27 +75,14 @@
                 </div>
               </div>
               <!-- /.col -->
-              <div class="col-4">
-                <button type="submit" class="btn btn-primary btn-block">Register</button>
+              <div class="col-5">
+                <button type="submit" [disabled]="(isTrue || dataEmail || dataTel)" class="btn btn-primary btn-block">Enregistrer</button>
               </div>
               <!-- /.col -->
             </div>
           </form>
-    
-          <div class="social-auth-links text-center">
-            <p>- OR -</p>
-            <a href="#" class="btn btn-block btn-primary">
-              <i class="fab fa-facebook mr-2"></i>
-              Sign up using Facebook
-            </a>
-            <a href="#" class="btn btn-block btn-danger">
-              <i class="fab fa-google-plus mr-2"></i>
-              Sign up using Google+
-            </a>
+
           </div>
-    
-          <a href="login.html" class="text-center">I already have a membership</a>
-        </div>
         <!-- /.form-box -->
       </div><!-- /.card -->
     </div>

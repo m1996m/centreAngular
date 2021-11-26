@@ -25,7 +25,7 @@ export class FourniseurCentreService {
   }
 
   getSearch(Fournisseur:FournisseurModel) {
-    return this.http.post(this.global+'rechercherFournisseur',Fournisseur);
+    return this.http.post(this.global+'rechercherfournisseur',Fournisseur);
   }
 
   verificationUniciteTEl(tel:FournisseurModel) {

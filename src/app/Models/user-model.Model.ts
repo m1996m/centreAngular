@@ -11,7 +11,9 @@ export class UserModel {
         public slug:string,
         public first:number,
         public image:string,
-        public actifi: string,
+        public actif: string,
+        public adresse:string,
+        public confirmation:string,
         public centre?:CentreModel,
     ){}
 }

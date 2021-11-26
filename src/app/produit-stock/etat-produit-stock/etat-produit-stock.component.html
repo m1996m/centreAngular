@@ -1,0 +1,124 @@
+<body class="hold-transition sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+     
+      <!-- Main Sidebar Container -->
+    
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>Blank Page</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item active">Blank Page</li>
+                </ol>
+              </div>
+            </div>
+          </div><!-- /.container-fluid -->
+        </section>
+    
+        <!-- Main content -->
+        <section class="content">
+    
+          <!-- Default box -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title" style="text-align: center;">Liste des produits</h3>
+    
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="container">
+                <!--  Affichage de la recherche  -->
+                   <div class="row">
+                      <div class="col-md-5">
+                          <a routerLink="/produit/stock/" class="btn btn-primary">Liste des stock produit</a>
+                      </div> 
+                    </div>
+                    <br>
+                    <form #form="ngForm" (ngSubmit)="getproduitStock(form)">
+                        <div class="row">
+                          <div class="col-md-8">
+                            <select  ngModel class="form-control"  name="stock" id="stock" >
+                              <option *ngFor="let stock of stocks;let i=index" value="{{i+1}}" id="produit">{{stock.nom}}/{{stock.adresse}}</option>
+                            </select>                        
+                          </div>
+                            <div class="col-md-2">
+                                <input type="submit" value="Rechercher" class="btn btn-primary">
+                            </div>
+                        </div>
+                    </form>
+                    <br>
+                    <div *ngIf="produitStocks" id="search" [hidden]="isTrue">
+                      <div class="col-md-4">
+                        <a (click)="getIsTrue()" routerLink="/produit/stock/etat" class="btn btn-primary">Retour</a>
+                      </div>  
+                      <br>
+                        <div class="row">
+                            <div class="container">
+                              <div class="row">
+                                <div class="col-md-12">
+                                  <div class="card">
+                                    <div class="container table-responsive">
+                                        <br>
+                                        <table class="table table-bordered">
+                                            <thead class="table-dark font-weight-bold">
+                                              <tr>
+                                                <th>ID</th>
+                                                <th>Designation</th>
+                                                <th>Type</th>
+                                                <th>Quantité Totale</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody class="font-weight-bold">
+                                              <tr *ngFor="let produit of produitStocks;let i=index">
+                                                  <td>{{i+1}}</td>
+                                                  <td>{{produit.designation}}</td>
+                                                  <td>{{produit.type}}</td>
+                                                  <td [ngStyle]="{background:getColor(produit.total)}">{{produit.total}}</td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                                    </div>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+  
+                <!--  Affichage de la recherche-->
+              </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+              Footer
+            </div>
+            <!-- /.card-footer-->
+          </div>
+          <!-- /.card -->
+    
+        </section>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+      
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+      <!-- /.control-sidebar -->
+    </div>

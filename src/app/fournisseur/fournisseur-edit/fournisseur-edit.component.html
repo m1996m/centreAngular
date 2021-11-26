@@ -1,0 +1,105 @@
+<body class="hold-transition sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+     
+      <!-- Main Sidebar Container -->
+    
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>Blank Page</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                  <li class="breadcrumb-item active">Blank Page</li>
+                </ol>
+              </div>
+            </div>
+          </div><!-- /.container-fluid -->
+        </section>
+    
+        <!-- Main content -->
+        <section class="content">
+    
+          <!-- Default box -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title" style="text-align: center;">Editer fournisseur</h3>
+    
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-4">
+                      <a routerLink="/fournisseur" class="btn btn-primary">Les fournisseurs</a>
+                  </div> 
+                </div>
+                <br>
+                <!-- Ajout fournisseur-->
+                <div >
+                  <form [formGroup]="form" (ngSubmit)="Enregistrer()">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <label for="nom">Nom</label>
+                          <input type="text" formControlName="nom" id="nom" placeholder="Saisir le nom du centre" class="form-control">
+                          <label for="prenom">Prenom</label>
+                          <input type="text" formControlName="prenom" id="prenom" placeholder="Saisir le prenom du centre" class="form-control">
+                          <label for="adresse">Adresse</label>
+                          <input type="text" formControlName="adresse" id="adresse" placeholder="Saisir le adresse du centre" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                          <label for="tel">Tel</label>
+                          <input type="text" (blur)="onblurTel()" formControlName="tel" id="tel" placeholder="Saisir le tel du centre" class="form-control">
+                          <label for="dateNaissance">Date Naissance</label>
+                          <input type="date" formControlName="dateNaissance" id="dateNaissance" placeholder="Saisir la ville où se trouvve le centre" class="form-control">
+                          <label for="image">image</label>
+                          <input type="text" formControlName="image" id="image" placeholder="Saisir la ville où se trouvve le centre" class="form-control">
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row">
+                        <div class="col-md-4">
+                          <input type="submit"  value="Enregistrer" class="btn btn-primary">
+                        </div>
+                      </div>
+                  </form>
+                </div>
+                <!-- Ajout fournisseur-->
+              </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+              Footer
+            </div>
+            <!-- /.card-footer-->
+          </div>
+          <!-- /.card -->
+    
+        </section>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+    
+    
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+      <!-- /.control-sidebar -->
+    </div>
+    
+    
+    

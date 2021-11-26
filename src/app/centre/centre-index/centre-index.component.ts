@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./centre-index.component.css']
 })
 export class CentreIndexComponent implements OnInit {
+  
   centres:any;
   centre:any;
   form:any;

@@ -21,21 +21,27 @@ export class UserService {
   getAllUser() {
     return this.http.get(this.global+'User');
   }
-  createUser(User:UserModel) {
-    return this.http.post(this.global+'User/new',User);
+  createUser(User:any) {
+    return this.http.post(this.global+'register',User);
   }
-
-  getSearch(User:UserModel) {
+  connexion(data:any){
+    return this.http.post(this.global+'api/login',data);
+  }
+  getSearch(User:any) {
     return this.http.post(this.global+'rechercherUser',User);
   }
 
-  verificationUniciteTEl(tel:UserModel) {
-    return this.http.post(this.global+'verificationUniciteTelUser',tel);
+  verificationUniciteTEl(tel:any) {
+    return this.http.post(this.global+'verificationUniciteTel',tel);
+  }
+
+  verificationUniciteEmail(email:any) {
+    return this.http.post(this.global+'verificationUniciteEmail',email);
   }
   getOneUser(id:number){
     return this.http.get(this.global+'getOneUser/'+id);
   }
-  editUser(id:number, User:UserModel){
+  editUser(id:number, User:any){
     return this.http.post(this.global+'getAndOrEditUser/'+id,User);
   }
   deleteUser(id:number){

@@ -17,11 +17,12 @@ import { TypeProduitService } from './services/type-produit.service';
 import { TypeRayonService } from './services/type-rayon.service';
 import { UserService } from './services/user.service';
 import { VenteService } from './services/vente.service';
-import { ReactiveFormsModule, NgModel } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { StockComponent } from './stock/stock.component';
 import { ProduitComponent } from './produit/produit.component';
 import { ProduitStockComponent } from './produit-stock/produit-stock.component';
-
+import { FournisseurComponent } from './fournisseur/fournisseur.component';
+import { ClientComponent } from './client/client.component';
 
 
 @NgModule({
@@ -30,13 +31,16 @@ import { ProduitStockComponent } from './produit-stock/produit-stock.component';
     HeaderComponent,
     StockComponent,
     ProduitComponent,
-    ProduitStockComponent,    
+    ProduitStockComponent,
+    FournisseurComponent,
+    ClientComponent,    
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [
     CentreService,

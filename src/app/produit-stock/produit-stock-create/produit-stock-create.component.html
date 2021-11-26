@@ -44,45 +44,32 @@
               <div class="container">
                 <div class="row">
                   <div class="col-md-4">
-                      <a routerLink="/produit/stock" class="btn btn-primary">Les produit</a>
+                      <a routerLink="/produit/stock" class="btn btn-primary">Les produits</a>
                   </div> 
-                  <div class="col-md-4">
-                    <a (click)="onClick()" class="btn btn-primary" routerLink="" >Ajouter Fournisseur</a>
-                </div> 
                 </div>
                 <br>
                 <!-- Ajout produit stock-->
-                <form [formGroup]="form" (ngSubmit)="Enregistrer()">
+                <form #form="ngForm" (ngSubmit)="Enregistrer(form)" >
                   <div class="row">
                     <div class="col-md-6">
                       <label for="produit">Produit</label>
-                      <select (blur)="blurProduit()" class="form-control" formControlName="produit" id="produit" >
-                          <option *ngFor="let produit of produits" value="{{produit.id}}" id="produit">{{produit.designation}}{{produit.type.type}}</option>
+                      <select  ngModel (blur)="blurProduit(form)" class="form-control"  name="produit" id="produit" >
+                          <option *ngFor="let produit of produits;let i=index" value="{{i+1}}" id="produit">{{produit.designation}}{{produit.type.type}}</option>
                       </select>
-                      <div *ngFor="let prod of dataproduit">
-                          <label for="pua">PUA</label>
-                          <input type="text" formControlName="pua" id="pua" value="{{prod.pua}}" class="form-control">
-                          <div *ngIf="form.get('pua').invalid && (form.dirty || form.touched)"class="alert alert-danger">
-                            <div *ngIf="form.get('pua').hasError('required')">
-                              pua doit etre renseigner.
-                            </div>
-                          </div>
-                          <label for="puv">PUV</label>
-                          <input type="text" formControlName="puv" id="puv" value="{{prod.puv}}" class="form-control">
-                          <div *ngIf="form.get('puv').invalid && (form.dirty || form.touched)"class="alert alert-danger">
-                            <div *ngIf="form.get('puv').hasError('required')">
-                              puv doit etre renseigner.
-                            </div>
-                          </div>
-                      </div>
+                      <label for="pua">PUA</label>
+                      <input type="text" [ngModel]="dataproduit?.PUA" name="pua" id="pua" class="form-control">
+                      <label for="puv">PUV</label>
+                      <input type="text" [ngModel]="dataproduit?.PUV" name="puv" id="puv" class="form-control">
                     </div>
                     <div class="col-md-6">
+                      <label for="quantite">quantite</label>
+                      <input type="number" ngModel name="quantite" id="quantite" class="form-control">
                       <label for="fournisseur">Fournisseur</label>
-                      <select class="form-control"  formControlName="fournisseur" id="fournisseur" >
+                      <select class="form-control"  ngModel name="fournisseur" id="fournisseur" >
                           <option *ngFor="let fournisseur of fournisseurs" value="{{fournisseur.id}}" id="fournisseur">{{fournisseur.nom}}/{{fournisseur.adresse}}</option>
                       </select>
                       <label for="stock">Stock</label>
-                      <select class="form-control" formControlName="stock" id="stock" >
+                      <select class="form-control" ngModel name="stock" id="stock" >
                           <option *ngFor="let stock of stocks" value="{{stock?.id}}" id="stock">{{stock?.nom}}/{{stock?.adresse}}</option>
                       </select>
                     </div>
@@ -90,10 +77,10 @@
                   <br>
                   <div class="row">
                     <div class="col-md-4">
-                      <input type="submit" value="Enregistrer" class="btn btn-primary">
+                      <input type="submit" [disabled]="form.invalid" value="Enregistrer" class="btn btn-primary">
                     </div>
                   </div>
-              </form>
+                </form>
                  <!-- Ajout produit stock-->
               </div>
             </div>

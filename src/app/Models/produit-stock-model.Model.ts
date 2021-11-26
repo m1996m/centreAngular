@@ -8,9 +8,22 @@ export class ProduitStockModel {
         public pua:number,
         public puv:number,
         public quantite:number,
+        public total?:number,
+        public type?:string,
+        public noms?:string,
+        public nomUser?:string,
+        public prenomUser?:string,
+        public nomf?:string,
+        public prenomf?:string,
+        public telf?:string,
+        public idf?:number,
+        public idUser?:number,
+        public ids?:number,
+        public idP?:number,
+        public designation?:string,
+        public produit?:ProduitModel,
         public user?:UserModel,
         public fournisseur?:FournisseurModel,
-        public produit?:ProduitModel,
         public stock?:StockModel
         ){}
 }

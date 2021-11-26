@@ -1,0 +1,159 @@
+<body class="hold-transition sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+     
+      <!-- Main Sidebar Container -->
+    
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>Blank Page</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item active">Blank Page</li>
+                </ol>
+              </div>
+            </div>
+          </div><!-- /.container-fluid -->
+        </section>
+    
+        <!-- Main content -->
+        <section class="content">
+    
+          <!-- Default box -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title" style="text-align: center;">Liste des clients</h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="container">
+                <!--  Affichage de la recherche  -->
+                   <div class="row">
+                      <div class="col-md-4">
+                          <a routerLink="/client/create" class="btn btn-primary">Ajout</a>
+                      </div> 
+                    </div>
+                    <br>
+                    <form [formGroup]="form" (ngSubmit)="getSearch()">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" formControlName="content" placeholder="rechercher en fonction du nom ou pays ou tel ou email ou ville" id="content">
+                            </div>
+                            <div class="col-md-3">
+                                <input type="submit" class="btn btn-primary">
+                            </div>
+                        </div>
+                    </form>
+                    <br>
+                    <div *ngIf="client" id="search" [hidden]="isTrue">
+                        <div class="col-md-4">
+                            <a routerLink="/client" (click)="getIsTrue()" class="btn btn-primary">Retour</a>
+                        </div> 
+                        <div class="row">
+                            <div class="container">
+                              <div class="row">
+                                <div class="col-md-8" >
+                                  <div class="card">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h3 style="text-align: center;" >{{client.nom}}</h3>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h5>Nom:{{client.nom}}</h5> 
+                                                <h5>Prenom:{{client.prenom}}</h5> 
+                                                <h5>Adresse:{{client.adresse}}</h5> 
+                                            </div>
+                                            <div class="col-md-6">
+                                              <h5>Tel:{{client.tel}}</h5> 
+                                              <h5>DateNaissance:{{client.DateNaissance}}</h5> 
+                                              <h5>Ville:{{client.ville}}</h5> 
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <a routerLink="/client/show/{{client.id}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+                                            </div>
+                                            <div class="col-md-4">
+                                              <a (click)="getIsTrue()" routerLink="/client" class="btn btn-primary">Retour</a>
+                                          </div>                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <!--  Affichage de la recherche-->
+                <!--Affichage L'ensemble des clients-->
+                <div class="row" id="client" [hidden]="!isTrue">
+                    <div class="col-md-6" *ngFor="let cl of clients;let i=index" >
+                        <div class="card">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h3 style="text-align: center;" >{{cl.nom}}</h3>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4>Nom: {{cl.nom}}</h4>
+                                        <h4>Prenom: {{cl.prenom}}</h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4>Adresse: {{cl.adresse}}</h4>
+                                        <h4>Tel: {{cl.tel}}</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <a routerLink="/client/show/{{cl.id}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                        </div>
+                    </div>
+                </div>
+                <!--Affichage L'ensemble des centres-->
+              </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+              Footer
+            </div>
+            <!-- /.card-footer-->
+          </div>
+          <!-- /.card -->
+    
+        </section>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+        
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+      <!-- /.control-sidebar -->
+    </div>

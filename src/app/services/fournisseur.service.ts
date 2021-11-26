@@ -25,14 +25,14 @@ export class FournisseurService {
   }
 
   getSearch(Fournisseur:FournisseurModel) {
-    return this.http.post(this.global+'rechercherFournisseur',Fournisseur);
+    return this.http.post(this.global+'rechercherfournisseur',Fournisseur);
   }
 
   verificationUniciteTEl(tel:FournisseurModel) {
     return this.http.post(this.global+'verificationUniciteTelFournisseur',tel);
   }
   getOneFournisseur(id:number){
-    return this.http.get(this.global+'getOneFournisseur/'+id);
+    return this.http.get(this.global+'getOnefournisseur/'+id);
   }
   editFournisseur(id:number, Fournisseur:FournisseurModel){
     return this.http.post(this.global+'getAndOrEditFournisseur/'+id,Fournisseur);

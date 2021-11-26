@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 import { InscriptionComponent } from '../inscription/inscription.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { InscriptionComponent } from '../inscription/inscription.component';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     LoginRoutingModule,
   ]
 })

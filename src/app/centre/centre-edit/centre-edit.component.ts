@@ -36,8 +36,7 @@ export class CentreEditComponent implements OnInit {
   }
 
   Enregistrer(){
-    this.centreService.editCentre(this.id,this.form.value).subscribe((data:any)=>{
-    });
+    this.centreService.editCentre(this.id,this.form.value).subscribe((data:any)=>{});
   }
 
 }

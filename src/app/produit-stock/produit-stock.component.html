@@ -1,70 +1,157 @@
 <body class="hold-transition sidebar-mini">
-    <!-- Site wrapper -->
-    <div class="wrapper">
-     
-
-    
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <div class="container-fluid">
-            <div class="row mb-2">
-              <div class="col-sm-6">
-                <h1>Blank Page</h1>
-              </div>
-              <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-                  <li class="breadcrumb-item active">Blank Page</li>
-                </ol>
-              </div>
+  <!-- Site wrapper -->
+  <div class="wrapper">
+   
+    <!-- Main Sidebar Container -->
+  
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Blank Page</h1>
             </div>
-          </div><!-- /.container-fluid -->
-        </section>
-    
-        <!-- Main content -->
-        <section class="content">
-    
-          <!-- Default box -->
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title" style="text-align: center;">Ajout Centre</h3>
-    
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">Blank Page</li>
+              </ol>
             </div>
-            <div class="card-body">
-              <div class="container">
-    
-              </div>
-            </div>
-            <!-- /.card-body -->
-            <div class="card-footer">
-              Footer
-            </div>
-            <!-- /.card-footer-->
           </div>
-          <!-- /.card -->
-    
-        </section>
-        <!-- /.content -->
-      </div>
-      <!-- /.content-wrapper -->
-    
-    
-      <!-- Control Sidebar -->
-      <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-      </aside>
-      <!-- /.control-sidebar -->
+        </div><!-- /.container-fluid -->
+      </section>
+  
+      <!-- Main content -->
+      <section class="content">
+  
+        <!-- Default box -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title" style="text-align: center;">Liste des produits</h3>
+  
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                <i class="fas fa-minus"></i>
+              </button>
+              <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="container">
+              <!--  Affichage de la recherche  -->
+                 <div class="row">
+                    <div class="col-md-4">
+                        <a routerLink="/produit/stock/create" class="btn btn-primary">Ajout</a>
+                    </div> 
+                  </div>
+                  <br>
+                  <form #form="ngForm" (ngSubmit)="getSearch(form)">
+                      <div class="row">
+                        <div class="col-md-5">
+                          <select  ngModel class="form-control" name="produit" id="produit" >
+                            <option *ngFor="let produit of produits;let i=index" value="{{i+1}}" id="produit">{{produit.designation}}</option>
+                          </select>                        
+                        </div>
+                        <div class="col-md-5">
+                          <select  ngModel class="form-control"  name="stock" id="stock" >
+                            <option *ngFor="let stock of stocks;let i=index" value="{{i+1}}" id="type">{{stock.nom}}</option>
+                          </select> 
+                        </div>
+                          <div class="col-md-2">
+                              <input type="submit" value="Rechercher" class="btn btn-primary">
+                          </div>
+                      </div>
+                  </form>
+                  <br>
+                  <div *ngIf="stock" id="search" [hidden]="isTrue">
+                    <div class="col-md-4">
+                      <a (click)="getIsTrue()" routerLink="/produit/stock" class="btn btn-primary">Retour</a>
+                    </div>  
+                    <br>
+                      <div class="row">
+                          <div class="container">
+                            <div class="row">
+                              <div class="col-md-8">
+                                <div class="card">
+                                  <div class="container">
+                                      <div class="row">
+                                          <div class="col-md-6">
+                                              <h5>Nom:{{stock?.designation}}</h5> 
+                                              <h5>PUA:{{stock?.PUA}}</h5> 
+                                          </div>
+                                          <div class="col-md-6">
+                                            <h5>Type:{{stock?.type}}</h5> 
+                                            <h5>PUV:{{stock?.PUV}}</h5> 
+                                          </div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-md-4">
+                                              <a routerLink="/produit/stock/show/{{stock?.id}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+                                          </div>                                         
+                                      </div>
+                                  </div>
+                              </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+
+              <!--  Affichage de la recherche-->
+              <!--Affichage L'ensemble des produits-->
+              <div class="row" id="produit" [hidden]="!isTrue">
+                  <div class="col-md-6" *ngFor="let produit of produitStocks;let i=index" >
+                      <div class="card">
+                          <div class="container">
+                              <div class="row">
+                                  <div class="col-md-12">
+                                      <h3 style="text-align: center;" >{{produit?.designation}}</h3>
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <h4>Type: {{produit?.type}}</h4>
+                                      <h4>PUV: {{produit?.PUA}}</h4> 
+                                  </div>
+                                  <div class="col-md-6">
+                                      <h4>PUA: {{produit?.PUV}}</h4>
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col-md-4">
+                                      <a routerLink="/produit/stock/show/{{i+1}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+
+                      </div>
+                  </div>
+              </div>
+              <!--Affichage L'ensemble des produitres-->
+            </div>
+          </div>
+          <!-- /.card-body -->
+          <div class="card-footer">
+            Footer
+          </div>
+          <!-- /.card-footer-->
+        </div>
+        <!-- /.card -->
+  
+      </section>
+      <!-- /.content -->
     </div>
+    <!-- /.content-wrapper -->
     
-    
-    
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+  </div>

@@ -1,1 +1,105 @@
-<p>produit-stock-show works!</p>
+<body class="hold-transition sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+     
+      <!-- Main Sidebar Container -->
+    
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>Blank Page</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item active">Blank Page</li>
+                </ol>
+              </div>
+            </div>
+          </div><!-- /.container-fluid -->
+        </section>
+    
+        <!-- Main content -->
+        <section class="content">
+    
+          <!-- Default box -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title" style="text-align: center;">Liste des produits</h3>
+    
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="container">
+                <!--  Affichage de la recherche  -->
+                <div class="row">
+                    <div class="container">
+                        <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5>Nom:{{produit?.designation}}</h5> 
+                                        <h5>PUA:{{produit?.PUA}}</h5> 
+                                        <h5>Quantite:{{produit?.quantite}}</h5> 
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5>Type:{{produit?.type}}</h5> 
+                                        <h5>PUV:{{produit?.PUV}}</h5> 
+                                        <h5>Stock:{{produit?.noms}}</h5> 
+                                    </div>
+                                </div>
+                                <h5 style="text-align: right;">Ajouter par: {{produit?.nomUser}} {{produit?.prenomUser}}</h5>
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a routerLink="/produit/stock/edit/{{produit?.id}}" class="btn btn-primary">Editer</a>
+                                        </div>
+                                        <div class="col-md-5">
+                                          <button (click)="getDelete()" class="btn btn-danger" >Supprimer</button>
+                                        </div>
+                                        <div class="col-md-3">
+                                          <a routerLink="/produit/stock" class="btn btn-primary">Retour</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>  
+                <!--  Affichage de la recherche-->
+              </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+              Footer
+            </div>
+            <!-- /.card-footer-->
+          </div>
+          <!-- /.card -->
+    
+        </section>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+      
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+      <!-- /.control-sidebar -->
+    </div>

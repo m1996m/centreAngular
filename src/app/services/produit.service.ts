@@ -24,8 +24,12 @@ export class ProduitService {
     return this.http.post(this.global+'produit/new',produit);
   }
 
-  getSearch(produit:ProduitModel) {
+  getSearch(produit:any) {
     return this.http.post(this.global+'rechercherProduitDesignationType',produit);
+  }
+
+  getSearchID(produit:any) {
+    return this.http.post(this.global+'rechercherProduitID',produit);
   }
 
   getOneproduit(id:number){

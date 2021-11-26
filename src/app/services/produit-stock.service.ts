@@ -19,18 +19,18 @@ export class ProduitStockService {
   constructor(private http:HttpClient ) { }
 
   getAllProduitStock() {
-    return this.http.get(this.global+'ProduitStock');
+    return this.http.get(this.global+'produit/stock');
   }
   createProduitStock(produitStock:ProduitStockModel) {
-    return this.http.post(this.global+'ProduitStock/new',produitStock);
+    return this.http.post(this.global+'produit/stock/new',produitStock);
   }
 
-  getSearch(produitStock:ProduitStockModel) {
-    return this.http.post(this.global+'rechercherProduitStock',produitStock);
+  getSearch(produitStock:any) {
+    return this.http.post(this.global+'getProduit',produitStock);
   }
 
-  verificationUniciteTEl(tel:ProduitStockModel) {
-    return this.http.post(this.global+'verificationUniciteTelProduitStock',tel);
+  getEtat(produitStock:any) {
+    return this.http.post(this.global+'getEtatStockProduit',produitStock);
   }
   getOneProduitStock(id:number){
     return this.http.get(this.global+'getOneProduitStock/'+id);
