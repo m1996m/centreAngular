@@ -15,5 +15,6 @@ export class UserModel {
         public adresse:string,
         public confirmation:string,
         public centre?:CentreModel,
+        public token?:string
     ){}
 }

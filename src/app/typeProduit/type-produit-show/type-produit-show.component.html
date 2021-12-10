@@ -29,7 +29,7 @@
           <!-- Default box -->
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title" style="text-align: center;">index Centre</h3>
+              <h3 class="card-title" style="text-align: center;">Detail type prduit</h3>
     
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -55,14 +55,19 @@
                     <div class="col-md-12" >
                         <div class="card">
                             <div class="container">
+                              <div class="row">
+                                <div class="col-md-12">
+                                    <h4 class="shadow-none p-3 mb-5 bg-light rounded" style="text-align: center;">{{type?.nomCentre}}</h4>
+                                </div>
+                              </div>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <h4>Type: {{type.type}}</h4>
+                                        <h4>Type: {{type?.type}}</h4>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <a routerLink="/type/produit/edit/{{type.id}}" class="btn btn-primary">Editer</a>
+                                        <a routerLink="/type/produit/edit/{{type?.id}}" class="btn btn-primary">Editer</a>
                                     </div>
                                     <div class="col-md-4">
                                       <button (click)="getDeleteType()" class="btn btn-danger" >Supprimer</button>

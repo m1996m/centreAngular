@@ -30,11 +30,9 @@ export class TypeProduitCreateComponent implements OnInit {
     this.typeService.createTypeProduit(this.form.value).subscribe((data:any)=>{this.router.navigate(['/type/produit'])});
   }
   onblur(){
-    this.dataType.id=0;
+    this.dataType=0;
     this.typeService.verificationUniciteTypeProduit(this.form.value).subscribe((data:any)=>{
       this.dataType=data;
-      console.log(this.dataType);
-      return this.dataType;
     });
   }
 

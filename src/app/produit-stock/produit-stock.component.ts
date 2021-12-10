@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProduitStockService } from '../services/produit-stock.service';
-import { FormBuilder, NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TypeRayonService } from '../services/type-rayon.service';
-import { TypeProduitService } from '../services/type-produit.service';
+
 import { ProduitService } from '../services/produit.service';
 import { StockService } from '../services/stock.service';
 
@@ -15,7 +14,7 @@ import { StockService } from '../services/stock.service';
 export class ProduitStockComponent implements OnInit {
 
   produitStocks:any;
-  stock:any;
+  stockshearches:any;
   form:any;
   isTrue:boolean=true;
   produits:any;
@@ -40,7 +39,7 @@ export class ProduitStockComponent implements OnInit {
   getSearch(form:NgForm){
     this.isTrue=false;
     this.produitStockServiece.getSearch(form.value).subscribe((data:any)=>{ 
-      this.stock=data;
+      this.stockshearches=data;
     });
   }
   getIsTrue(){

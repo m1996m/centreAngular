@@ -3,6 +3,8 @@ import { StockModel } from '../../Models/stock-model.Model';
 import {  CentreService } from '../../services/centre.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { StockService } from '../../services/stock.service';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-stock-create',
@@ -15,7 +17,7 @@ export class StockCreateComponent implements OnInit {
   form:any;
   centres:any;
   dataNom:any;
-  constructor(private stockervice:StockService,private fb:FormBuilder,private CentreService:CentreService) { }
+  constructor(private stockervice:StockService,private fb:FormBuilder,private centreService:CentreService,private router:Router) { }
 
   ngOnInit(): void {
     this.getCentre();
@@ -27,18 +29,17 @@ export class StockCreateComponent implements OnInit {
       content:[this.stock.content],
       nom:[this.stock.nom,[Validators.required,Validators.minLength(3),Validators.maxLength(20)]],
       adresse:[this.stock.adresse,[Validators.required,Validators.minLength(5),Validators.maxLength(40)]],
-      centtre:[this.stock.centre,[Validators.required,Validators.minLength(1),Validators.maxLength(1)]],
+      idCentre:[this.stock.idCentre,[Validators.required,Validators.minLength(1),Validators.maxLength(1)]],
     });
   }
   getCentre(){
-    this.CentreService.getAllCentre().subscribe((data:any)=>{this.centres=data});
-    console.log(this.centres);
+    this.centreService.getAllCentre().subscribe((data:any)=>{this.centres=data;console.log(this.centres);});
   }
   Enregistrer(){
-    this.stockervice.createStock(this.form.value).subscribe((data:any)=>{});
+    this.stockervice.createStock(this.form.value).subscribe((data:any)=>{this.router.navigate(['/stock'])});
   }
   onblur(){
-    this.dataNom.id=0;
+    this.dataNom=0;
     this.stockervice.verificationNom(this.form.value).subscribe((data:any)=>{
       this.dataNom=data;
     });

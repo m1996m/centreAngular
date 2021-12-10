@@ -6,7 +6,7 @@ import { CentreComponent } from './centre.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { FooterComponent } from '../footer/footer.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CentreIndexComponent } from './centre-index/centre-index.component';
 import { CentreEditComponent } from './centre-edit/centre-edit.component';
 import { CentreShowComponent } from './centre-show/centre-show.component';
@@ -26,6 +26,7 @@ import { CentreShowComponent } from './centre-show/centre-show.component';
     CommonModule,
     CentreRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
   ]
 })
 export class CentreModule { }

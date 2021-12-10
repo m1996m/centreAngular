@@ -11,15 +11,12 @@ import { FormBuilder } from '@angular/forms';
 })
 export class ClientCreateComponent implements OnInit {
 
-  clients:ClientModel=new ClientModel(0,'','','','',',','','','');
+  clients:ClientModel=new ClientModel(0,'','','','','','');
   form:any;
   dataTel:any;
-  id:number=0;
   constructor(private clientService:ClientService,private router:Router, private fb:FormBuilder,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.id=this.route.snapshot.params['id'];
-    this.clientService.getOneClient(this.id).subscribe((data:any)=>{this.clients=data;console.log(this.clients)})
     this.initForm();
   }
   initForm(){
@@ -35,12 +32,12 @@ export class ClientCreateComponent implements OnInit {
   }
 
   Enregistrer(){
-    this.clientService.editClient(this.id,this.form.value).subscribe((data:any)=>{this.router.navigate(['/client'])});
+    this.clientService.createClient(this.form.value).subscribe((data:any)=>{this.router.navigate(['/client'])});
   }
   onblurTel(){
+    this.dataTel=0;
     this.clientService.verificationUniciteTEl(this.form.value).subscribe((data:any)=>{
       this.dataTel=data;
-      console.log(this.dataTel);
   }); 
 }
 

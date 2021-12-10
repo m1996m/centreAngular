@@ -23,6 +23,9 @@ import { ProduitComponent } from './produit/produit.component';
 import { ProduitStockComponent } from './produit-stock/produit-stock.component';
 import { FournisseurComponent } from './fournisseur/fournisseur.component';
 import { ClientComponent } from './client/client.component';
+import { RayonComponent } from './rayon/rayon.component';
+import { TypeRayonComponent } from './type-rayon/type-rayon.component';
+import { VenteComponent } from './vente/vente.component';
 
 
 @NgModule({
@@ -33,7 +36,10 @@ import { ClientComponent } from './client/client.component';
     ProduitComponent,
     ProduitStockComponent,
     FournisseurComponent,
-    ClientComponent,    
+    ClientComponent,
+    RayonComponent,
+    TypeRayonComponent,
+    VenteComponent,    
   ],
   imports: [
     BrowserModule,

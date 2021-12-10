@@ -29,7 +29,7 @@
         <!-- Default box -->
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title" style="text-align: stocker;">index stock</h3>
+            <h3 class="card-title" style="text-align: stocker;">Affichage stock</h3>
   
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -64,21 +64,16 @@
                       <div class="row">
                           <div class="container">
                               <div class="row">
-                                <div class="col-md-8" *ngFor="let stok of stock">
+                                <div class="col-md-8">
                                   <div class="card">
                                     <div class="container">
                                         <div class="row">
-                                            <div style="text-align: stocker;" class="col-md-12">
-                                                Nom:{{stok?.nom}}
-                                            </div>
-                                        </div>
-  
-                                        <div class="row">
-                                          <div class="col-md-6">
-                                              Adresse:{{stok?.adresse}}
+                                          <div class="col-md-7">
+                                            <h4>Nom:{{stock?.nom}}</h4>
+                                            <h4>Adresse:{{stock?.adresse}}</h4>
                                           </div>
-                                          <div class="col-md-6">
-                                              Centre:{{stok?.centre?.nom}}
+                                          <div class="col-md-5">
+                                            <h4>Centre:{{stock?.nomCentre}}</h4>    
                                           </div>
                                         </div>
                                         <div class="row">
@@ -104,24 +99,20 @@
                       <div class="card">
                           <div class="container">
                             <div class="row">
-                              <div style="text-align: stocker;" class="col-md-12">
-                                  Nom:{{stock?.nom}}
+                              <div class="col-md-7">
+                                <h4>Nom: {{stock?.nom}}</h4>
+                                <h4>Adresse: {{stock?.adresse}}</h4>   
                               </div>
-                          </div>
-
-                          <div class="row">
-                            <div class="col-md-6">
-                                Adresse:{{stock?.adresse}}
-                            </div>
-                            <div class="col-md-6">
-                                stockre:{{stock?.centre?.nom}}
-                            </div>
-                          </div>
-                              <div class="row">
-                                  <div class="col-md-4">
-                                      <a routerLink="/stock/show/{{stock.id}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-                                  </div>
+                              <div class="col-md-5">
+                                <h4>Centre: {{stock?.nomCentre}}</h4>
+                                  
                               </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <a routerLink="/stock/show/{{stock.id}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+                                </div>
+                            </div>
                           </div>
                       </div>
                       <div class="col-md-6">

@@ -16,8 +16,8 @@ import { ProduitModel } from '../../Models/produit-model.Model';
 })
 export class ProduitStockEditComponent implements OnInit {
 
-  produitStock:ProduitStockModel=new ProduitStockModel(0,0,0,0);
-  fournisseur:FournisseurModel=new FournisseurModel(0,'','','','','','','');
+  produitStock:any;
+  fournisseur:any;
   form:any;
   dataTel:any;
   produits:any;
@@ -25,7 +25,7 @@ export class ProduitStockEditComponent implements OnInit {
   isTrue:boolean=true;
   stocks:any;
   id:number=0;
-  dataproduit:ProduitModel=new ProduitModel(0,'','',0,0);
+  dataproduit:any;
   constructor(private stockService:StockService, private produitStockService:ProduitStockService,private activatedRoute:ActivatedRoute,private router:Router,private fournisseuService:FournisseurService,private produitService:ProduitService) { }
 
   ngOnInit(): void {
@@ -34,17 +34,15 @@ export class ProduitStockEditComponent implements OnInit {
     this.getStock();
     this.id=this.activatedRoute.snapshot.params['id'];
     this.getOneProduit();
-    console.log(this.produitStock);
-    this.dataproduit.PUA=this.produitStock.pua;
-    this.dataproduit.PUV=this.produitStock.puv;
   }
 
   Enregistrer(form:NgForm){
-    this.produitStockService.createProduitStock(form.value).subscribe((data:any)=>{this.router.navigate(['/produit/stock'])});
+    this.produitStockService.editProduitStock(this.id,form.value).subscribe((data:any)=>{this.router.navigate(['/produit/stock'])});
   }
   getOneProduit(){
     this.produitStockService.getOneProduitStock(this.id).subscribe((data:any)=>{
       this.produitStock=data;
+      this.dataproduit=data;
     });
   }
   click(){
@@ -58,12 +56,6 @@ export class ProduitStockEditComponent implements OnInit {
     this.fournisseuService.getAllFournisseur().subscribe((data:any)=>{
       this.fournisseurs=data;
     });
-  }
-
-  blurProduit(form:NgForm){
-    this.produitService.getSearchID(form.value).subscribe((data:any)=>{
-      this.dataproduit=data;console.log(this.dataproduit)});
-    
   }
 
   getStock(){

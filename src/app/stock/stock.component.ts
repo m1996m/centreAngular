@@ -34,7 +34,7 @@ export class StockComponent implements OnInit {
       this.isTrue=true;
     }
     this.stockServiece.getSearch(this.form.value).subscribe((data:any)=>{ 
-      this.stock=data; console.log(this.stock);
+      this.stock=data;
     });
   }
 

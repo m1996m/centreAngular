@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ClientModule } from './client/client.module';
 
 const routes: Routes = [
   { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
@@ -11,6 +10,9 @@ const routes: Routes = [
   { path: 'type/produit', loadChildren: () => import('./typeProduit/type-produit.module').then(m => m.TypeProduitModule) },
   { path: 'fournisseur', loadChildren: () => import('./fournisseur/fournisseur.module').then(m => m.ForunisseurModule) },
   { path: 'client', loadChildren: () => import('./client/client.module').then(m => m.ClientModule) },
+  { path: 'rayon', loadChildren: () => import('./rayon/rayon.module').then(m => m.RayonModule) },
+  { path: 'type/rayon', loadChildren: () => import('./type-rayon/type-rayon.module').then(m => m.TypeRayonModule) },
+  { path: 'vente', loadChildren: () => import('./vente/vente.module').then(m => m.VenteModule) },
 ];
 
 @NgModule({

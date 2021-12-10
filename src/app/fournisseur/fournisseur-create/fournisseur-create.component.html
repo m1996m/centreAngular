@@ -44,7 +44,7 @@
               <div class="container">
                 <div class="row">
                   <div class="col-md-4">
-                      <a routerLink="/fournisseur" class="btn btn-primary">Les fournisseur</a>
+                      <a routerLink="/fournisseur" class="btn btn-primary">Les fournisseurs</a>
                   </div> 
                 </div>
                 <br>
@@ -54,22 +54,22 @@
                       <div class="row">
                         <div class="col-md-6">
                           <label for="nom">Nom</label>
-                          <input type="text" formControlName="nom" id="nom" placeholder="Saisir le nom du centre" class="form-control">
+                          <input type="text" formControlName="nom" id="nom" class="form-control">
                           <label for="prenom">Prenom</label>
-                          <input type="text" formControlName="prenom" id="prenom" placeholder="Saisir le prenom du centre" class="form-control">
+                          <input type="text" formControlName="prenom" id="prenom" class="form-control">
                           <label for="adresse">Adresse</label>
-                          <input type="text" formControlName="adresse" id="adresse" placeholder="Saisir le adresse du centre" class="form-control">
+                          <input type="text" formControlName="adresse" id="adresse" class="form-control">
                         </div>
                         <div class="col-md-6">
                           <label for="tel">Tel</label>
-                          <input type="text" (blur)="onblurTel()" formControlName="tel" id="tel" placeholder="Saisir le tel du centre" class="form-control">
+                          <input type="text" (blur)="onblurTel()" formControlName="tel" id="tel" class="form-control">
                           <div *ngIf="dataTel" class="alert alert-danger">
                               <h5>Un fournnisseur possedant ce numero existe</h5>
                           </div>
                           <label for="dateNaissance">Date Naissance</label>
-                          <input type="date" formControlName="dateNaissance" id="dateNaissance" placeholder="Saisir la ville où se trouvve le centre" class="form-control">
+                          <input type="date" formControlName="dateNaissance" id="dateNaissance" class="form-control">
                           <label for="image">image</label>
-                          <input type="text" formControlName="image" id="image" placeholder="Saisir la ville où se trouvve le centre" class="form-control">
+                          <input type="file" formControlName="image" id="image" class="form-control">
                         </div>
                       </div>
                       <br>

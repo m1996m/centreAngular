@@ -50,29 +50,32 @@
                 <br>
                 <!-- Ajout fournisseur-->
                 <div >
-                  <form [formGroup]="form" (ngSubmit)="Enregistrer()">
+                  <form #form="ngForm" (ngSubmit)="Enregistrer(form)">
                       <div class="row">
                         <div class="col-md-6">
                           <label for="nom">Nom</label>
-                          <input type="text" formControlName="nom" id="nom" placeholder="Saisir le nom du centre" class="form-control">
+                          <input type="text" [ngModel]="fournisseur?.nom" name="nom" id="nom" class="form-control">
                           <label for="prenom">Prenom</label>
-                          <input type="text" formControlName="prenom" id="prenom" placeholder="Saisir le prenom du centre" class="form-control">
+                          <input type="text" [ngModel]="fournisseur?.prenom" name="prenom" id="prenom" class="form-control">
                           <label for="adresse">Adresse</label>
-                          <input type="text" formControlName="adresse" id="adresse" placeholder="Saisir le adresse du centre" class="form-control">
+                          <input type="text" [ngModel]="fournisseur?.adresse" name="adresse" id="adresse" class="form-control">
                         </div>
                         <div class="col-md-6">
                           <label for="tel">Tel</label>
-                          <input type="text" (blur)="onblurTel()" formControlName="tel" id="tel" placeholder="Saisir le tel du centre" class="form-control">
+                          <input type="text" (blur)="onblurTel(form)" [ngModel]="fournisseur?.tel" name="tel" id="tel" class="form-control">
+                          <div *ngIf="dataTel" class="alert alert-danger">
+                            <h6>Un fournisseur possède deja ce numero</h6>
+                          </div>
                           <label for="dateNaissance">Date Naissance</label>
-                          <input type="date" formControlName="dateNaissance" id="dateNaissance" placeholder="Saisir la ville où se trouvve le centre" class="form-control">
+                          <input type="date" [ngModel]="fournisseur?.dateNaissance" name="dateNaissance" id="dateNaissance" class="form-control">
                           <label for="image">image</label>
-                          <input type="text" formControlName="image" id="image" placeholder="Saisir la ville où se trouvve le centre" class="form-control">
+                          <input type="file" [ngModel]="fournisseur?.image" name="image" id="image"  class="form-control">
                         </div>
                       </div>
                       <br>
                       <div class="row">
                         <div class="col-md-4">
-                          <input type="submit"  value="Enregistrer" class="btn btn-primary">
+                          <input type="submit" [disabled]="dataTel" value="Enregistrer" class="btn btn-primary">
                         </div>
                       </div>
                   </form>

@@ -50,8 +50,8 @@
                     <div class="row">
                       <div class="col-md-6">
                         <label for="nom">Nom</label>
-                        <input type="text" formControlName="nom" id="nom" placeholder="Saisir le nom du centre" class="form-control">
-                        <div *ngIf="(form.get('nm').invalid || dataNom) && (form.dirty || form.touched)"class="alert alert-danger">
+                        <input type="text" formControlName="nom" id="nom" placeholder="Saisir le nom du stock" class="form-control">
+                        <div *ngIf="(form.get('nom').invalid || dataNom) && (form.dirty || form.touched)"class="alert alert-danger">
                           <div *ngIf="form.get('nom').hasError('required')">
                             nom doit etre renseigner.
                           </div>
@@ -66,7 +66,7 @@
                           </div>
                         </div>
                         <label for="adresse">Adresse</label>
-                        <input type="text" formControlName="adresse" id="adresse" placeholder="Saisir le adresse du centre" class="form-control">
+                        <input type="text" formControlName="adresse" id="adresse" placeholder="Saisir le adresse du stock" class="form-control">
                         <div *ngIf="form.get('adresse').invalid && (form.dirty || form.touched)"class="alert alert-danger">
                           <div *ngIf="form.get('adresse').hasError('required')">
                             adresse doit etre renseigner.
@@ -77,18 +77,18 @@
                         </div>
                       </div>
                       <div class="col-md-6">
-                        <label for="centre">Centre</label>
-                        <select name="centre" (blur)="onblur()" formControlName="centre" id="centre" class="form-control">
-                            <option *ngFor="let cent of centres" name="centre" value="{{cent?.id}}">{{cent?.nom}}/{{cent?.adresse}}</option>
+                        <label for="idCentre">Centre</label>
+                        <select (blur)="onblur()" formControlName="idCentre" id="idCentre" class="form-control">
+                            <option *ngFor="let cent of centres"  value="{{cent?.id}}">{{cent?.nom}}({{cent?.adresse}})</option>
                         </select>
-                        <div *ngIf="(form.get('centre').invalid || dataNom) && (form.dirty || form.touched)"class="alert alert-danger">
-                          <div *ngIf="form.get('centre').hasError('required')">
+                        <div *ngIf="(form.get('idCentre').invalid || dataNom) && (form.dirty || form.touched)"class="alert alert-danger">
+                          <div *ngIf="form.get('idCentre').hasError('required')">
                             centre doit etre renseigner.
                           </div>
-                          <div *ngIf=" form.get('centre').hasError('minlength')">
+                          <div *ngIf=" form.get('idCentre').hasError('minlength')">
                             centre minimum 8 caracteres.
                           </div>
-                          <div *ngIf="dataNom.id>0">
+                          <div *ngIf="dataNom">
                             Un centre portant ce nom existe deja
                           </div>
                         </div>

@@ -7,7 +7,7 @@ import { ClientModel } from '../Models/client-model.Model';
 })
 export class ClientService {
 
-  global = 'http://127.0.0.1:8000/';
+  lien = 'http://127.0.0.1:8000/';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -18,26 +18,26 @@ export class ClientService {
   constructor(private http:HttpClient ) { }
 
   getAllClient() {
-    return this.http.get(this.global+'client');
+    return this.http.get(this.lien+'client');
   }
   createClient(Client:ClientModel) {
-    return this.http.post(this.global+'client/new',Client);
+    return this.http.post(this.lien+'client/new',Client);
   }
 
-  getSearch(Client:ClientModel) {
-    return this.http.post(this.global+'rechercherClient',Client);
+  getSearch(Client:any) {
+    return this.http.post(this.lien+'rechercherClient',Client);
   }
 
-  verificationUniciteTEl(tel:ClientModel) {
-    return this.http.post(this.global+'verificationUniciteTelClient',tel);
+  verificationUniciteTEl(tel:any) {
+    return this.http.post(this.lien+'verificationUniciteTelClient',tel);
   }
   getOneClient(id:number){
-    return this.http.get(this.global+'getOneCLient/'+id);
+    return this.http.get(this.lien+'getOneCLient/'+id);
   }
-  editClient(id:number, Client:ClientModel){
-    return this.http.post(this.global+'getAndEditClient/'+id,Client);
+  editClient(id:number, Client:any){
+    return this.http.post(this.lien+'getAndEditClient/'+id,Client);
   }
   deleteClient(id:number){
-    return this.http.delete(this.global+'client/getRemove/'+id);
+    return this.http.delete(this.lien+'client/getRemove/'+id);
   }
 }

@@ -1,0 +1,137 @@
+<body class="hold-transition sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+      
+      <!-- Main Sidebar Container -->
+    
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>Blank Page</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                  <li class="breadcrumb-item active">Blank Page</li>
+                </ol>
+              </div>
+            </div>
+          </div><!-- /.container-fluid -->
+        </section>
+    
+        <!-- Main content -->
+        <section class="content">
+    
+          <!-- Default box -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title" style="text-align: center;">Ajout vente</h3>
+    
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div >
+                <div class="row">
+                  <div class="col-md-4">
+                      <a routerLink="/ventes" class="btn btn-primary">Mes ventes</a>
+                  </div> 
+                </div>
+                <br>
+                <!-- Ajout typeRayon stock-->
+                <div class="row">
+                  <div class="col-md-6">
+                    <form #form="ngForm" (ngSubmit)="Enregistrer()" >
+                      <div class="row">
+                        <div class="col-md-6">
+                          <label for="idRayon">Produit</label>
+                          <select (change)="onChange()" ngModel  class="form-control"  name="idRayon" id="idRayon" >
+                            <option *ngFor="let rayon of rayons;let i=index" value="{{rayon.id}}" id="typeRayon">{{rayon.designationProduit}}({{rayon.typeProduit}})</option>
+                          </select>
+                          <label for="idClient">Client</label>
+                          <select [disabled]="!desabled" (change)="onDesabled()"  ngModel  class="form-control"  name="idClient" id="idClient" >
+                              <option *ngFor="let client of clients;let i=index" value="{{client.id}}" id="typeRayon">{{client?.nom}} {{client?.prenom}}</option>
+                          </select>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="quantiteVendu">quantite</label>
+                          <input (change)="onChange()" type="number" ngModel name="quantiteVendu" id="quantiteVendu" class="form-control">
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row">
+                        <div [hidden]="!isTrue" style="border: 2px solid;background-color: cornflowerblue;" class="col-md-4">
+                          <a (click)="ajoutForm(form)">Ajouter un autre</a>
+                        </div>
+                        <div class="col-md-4">
+                          <input type="submit" [disabled]="!datas || !isOk" value="Enregistrer" class="btn btn-primary">
+                        </div>
+                        <div class="col-md-4">
+                          <input (click)="reset(form)" ng-click="reset()" type="reset" value="Anuller" class="btn btn-primary">
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div [hidden]="!active" class="col-md-6">
+                    <table class="table table-bordered">
+                      <thead class="thead-light">
+                        <tr>
+                          <th>Produit</th>
+                          <th>Type</th>
+                          <th>Qtite</th>
+                          <th>Prix</th>
+                          <th>Retirer</th>
+                        </tr>
+                      </thead>
+                      <tbody *ngFor="let data of datas; let i=index">
+                        <tr>
+                          <td>{{data.produit}}</td>
+                          <td>{{data.type}}</td>
+                          <td>{{data.quantite}}</td>
+                          <td>{{data.puv}}</td>
+                          <td (click)="supprimerElement(i)" style="color: red;">X</td>
+                        </tr>
+                      </tbody>
+                      <tr>
+                        <th>Montant</th>
+                        <td style="text-align: right;" class="shadow-none p-3 mb-5 bg-light rounded" colspan="4"> </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                 <!-- Ajout typeRayon stock-->
+              </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+              Footer
+            </div>
+            <!-- /.card-footer-->
+          </div>
+          <!-- /.card -->
+    
+        </section>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+    
+    
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+      <!-- /.control-sidebar -->
+    </div>
+    
+    
+    

@@ -52,12 +52,12 @@
                   <form #form="ngForm" (ngSubmit)="getSearch(form)">
                       <div class="row">
                         <div class="col-md-5">
-                          <select  ngModel class="form-control" name="produit" id="produit" >
+                          <select  ngModel class="form-control" name="idP" id="produit" >
                             <option *ngFor="let produit of produits;let i=index" value="{{i+1}}" id="produit">{{produit.designation}}</option>
                           </select>                        
                         </div>
                         <div class="col-md-5">
-                          <select  ngModel class="form-control"  name="stock" id="stock" >
+                          <select  ngModel class="form-control"  name="ids" id="stock" >
                             <option *ngFor="let stock of stocks;let i=index" value="{{i+1}}" id="type">{{stock.nom}}</option>
                           </select> 
                         </div>
@@ -67,7 +67,7 @@
                       </div>
                   </form>
                   <br>
-                  <div *ngIf="stock" id="search" [hidden]="isTrue">
+                  <div *ngIf="stockshearches" id="search" [hidden]="isTrue">
                     <div class="col-md-4">
                       <a (click)="getIsTrue()" routerLink="/produit/stock" class="btn btn-primary">Retour</a>
                     </div>  
@@ -75,7 +75,7 @@
                       <div class="row">
                           <div class="container">
                             <div class="row">
-                              <div class="col-md-8">
+                              <div class="col-md-6" *ngFor="let stock of stockshearches">
                                 <div class="card">
                                   <div class="container">
                                       <div class="row">
@@ -96,6 +96,7 @@
                                   </div>
                               </div>
                               </div>
+                              <div class="col-md-6"></div>
                             </div>
                           </div>
                       </div>

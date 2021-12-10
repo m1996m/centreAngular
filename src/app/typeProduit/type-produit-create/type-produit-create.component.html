@@ -51,7 +51,7 @@
                   <div class="row">
                     <div class="col-md-6">
                       <label for="type">Type de produit</label>
-                      <input type="text" (blur)="onblur()" formControlName="type" id="type" placeholder="Saisir le type du centre" class="form-control">
+                      <input type="text" (keyup)="onblur()" formControlName="type" id="type" placeholder="Saisir le type du centre" class="form-control">
                       <div *ngIf="(form.get('type').invalid || dataType) && (form.dirty || form.touched)"class="alert alert-danger">
                         <div *ngIf="form.get('type').hasError('required')">
                           type doit etre renseigner.

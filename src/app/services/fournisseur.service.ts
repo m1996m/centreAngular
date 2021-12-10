@@ -35,7 +35,7 @@ export class FournisseurService {
     return this.http.get(this.global+'getOnefournisseur/'+id);
   }
   editFournisseur(id:number, Fournisseur:FournisseurModel){
-    return this.http.post(this.global+'getAndOrEditFournisseur/'+id,Fournisseur);
+    return this.http.post(this.global+'getAndEditFournisseur/'+id,Fournisseur);
   }
   deleteFournisseur(id:number){
     return this.http.delete(this.global+'getDeleteFournisseur/'+id);

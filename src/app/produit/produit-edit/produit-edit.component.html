@@ -48,19 +48,19 @@
                   </div> 
                 </div>
                 <br>
-                <form [formGroup]="form" (ngSubmit)="Enregistrer()">
+                <form #form="ngForm" (ngSubmit)="Enregistrer(form)">
                   <div class="row">
                     <div class="col-md-6">
                       <label for="designation">designation</label>
-                      <input type="text" value="{{produit?.designation}}" (blur)="onblur()" formControlName="designation" id="designation" placeholder="Saisir le designation du centre" class="form-control">
-                      <div *ngIf="(form.get('designation').invalid || dataNOm) && (form.dirty || form.touched)"class="alert alert-danger">
-                        <div *ngIf="form.get('designation').hasError('required')">
+                      <input type="text" (blur)="onblur(form)" [ngModel]="produit?.designation" name="designation" id="designation" placeholder="Saisir le designation du centre" class="form-control">
+                      <div *ngIf="(form.controls['designation']?.invalid || dataNOm) && (form.dirty || form.touched)"class="alert alert-danger">
+                        <div *ngIf="form.controls['designation']?.hasError('required')">
                           designation doit etre renseigner.
                         </div>
-                        <div *ngIf=" form.get('designation').hasError('minlength')">
+                        <div *ngIf=" form.controls['designation']?.hasError('minlength')">
                           designation minimum 3 caracteres.
                         </div>
-                        <div *ngIf=" form.get('designation').hasError('maxlength')">
+                        <div *ngIf=" form.controls['designation']?.hasError('maxlength')">
                           designation maximum 20 caracteres.
                         </div>
                         <div *ngIf="dataNOm">
@@ -68,23 +68,23 @@
                           </div>
                       </div>
                       <label for="adresse">PUA</label>
-                      <input type="text" value="{{produit.PUA}}" formControlName="PUA" id="pua" placeholder="Saisir le pua du centre" class="form-control">
-                      <div *ngIf="form.get('PUA').invalid && (form.dirty || form.touched)"class="alert alert-danger">
-                        <div *ngIf="form.get('PUA').hasError('required')">
+                      <input type="text" [ngModel]="produit?.PUA" name="PUA" id="pua" placeholder="Saisir le pua du centre" class="form-control">
+                      <div *ngIf="form.controls['PUA']?.invalid && (form.dirty || form.touched)"class="alert alert-danger">
+                        <div *ngIf="form.controls['PUA']?.hasError('required')">
                           PUA doit etre renseigner.
                         </div>
-                        <div *ngIf=" form.get('PUA').hasError('minlength')">
+                        <div *ngIf=" form.controls['PUA']?.hasError('minlength')">
                           pua minimum 7 caracteres.
                         </div>
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <label for="type">Type</label>
-                      <select formControlName="type"  (blur)="onblur()" class="form-control">
-                          <option *ngFor="let type of types" value="{{type.id}}">{{type.type}}</option>
+                      <label for="idTypeProduit">Type</label>
+                      <select [ngModel]="produit?.idTypeProduit" id="idTypeProduit" name="idTypeProduit"  (blur)="onblur(form)" class="form-control">
+                          <option *ngFor="let type of types" value="{{type?.id}}">{{type?.type}}</option>
                       </select>
-                      <div *ngIf="(form.get('type').invalid || dataNOm) && (form.dirty || form.touched)" class="alert alert-danger">
-                        <div *ngIf="form.get('type').hasError('required')">
+                      <div *ngIf="(form.controls['type']?.invalid || dataNOm) && (form.dirty || form.touched)" class="alert alert-danger">
+                        <div *ngIf="form.controls['type']?.hasError('required')">
                           Type doit etre renseigner.
                         </div>
                         <div *ngIf="dataNOm">
@@ -92,12 +92,12 @@
                         </div>
                       </div>
                       <label for="puv">PUV</label>
-                      <input type="text" value="{{produit.PUV}}" formControlName="PUV" id="puv" placeholder="Saisir le puv où se trouvve le centre" class="form-control">
-                      <div *ngIf="form.get('PUV').invalid && (form.dirty || form.touched)"class="alert alert-danger">
-                        <div *ngIf="form.get('PUV').hasError('required')">
+                      <input type="text"  [ngModel]="produit?.PUV" name="PUV" id="puv" placeholder="Saisir le puv où se trouvve le centre" class="form-control">
+                      <div *ngIf="form.controls['PUV']?.invalid && (form.dirty || form.touched)"class="alert alert-danger">
+                        <div *ngIf="form.controls['PUV']?.hasError('required')">
                           Champ doit etre renseigner.
                         </div>
-                        <div *ngIf=" form.get('adresse').hasError('maxlength')">
+                        <div *ngIf=" form.controls['adresse']?.hasError('maxlength')">
                           champ maximum 7 caracteres.
                         </div>
                       </div>
@@ -106,7 +106,7 @@
                   <br>
                   <div class="row">
                     <div class="col-md-4">
-                      <input type="submit" [disabled]="dataNOm" value="Enregistrer" class="btn btn-primary">
+                      <input type="submit" value="Enregistrer" class="btn btn-primary">
                     </div>
                   </div>
                 </form>

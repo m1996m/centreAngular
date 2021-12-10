@@ -27,7 +27,7 @@
           <!-- Default box -->
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title" style="text-align: center;">Ajout Stock</h3>
+              <h3 class="card-title" style="text-align: center;">Editer Stock</h3>
     
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -46,19 +46,19 @@
                   </div> 
                 </div>
                 <br>
-                <form [formGroup]="form" (ngSubmit)="Enregistrer()">
+                <form #form="ngForm" (ngSubmit)="Enregistrer(form)">
                     <div class="row">
                       <div class="col-md-6">
                         <label for="nom">Nom</label>
-                        <input (blur)="onblur()" type="text" value="{{stock?.nom}}" formControlName="nom" id="nom" placeholder="Saisir le nom du centre" class="form-control">
-                        <div *ngIf="(form.get('nm').invalid || dataNom.id>0) && (form.dirty || form.touched)"class="alert alert-danger">
-                          <div *ngIf="form.get('nom').hasError('required')">
+                        <input (keyup)="onblur(form)" type="text" [ngModel]="stock?.nom" name="nom" id="nom" class="form-control">
+                        <div *ngIf="(form.controls['nom']?.invalid || dataNom) && (form.dirty || form.touched)"class="alert alert-danger">
+                          <div *ngIf="form.controls['nom']?.hasError('required')">
                             nom doit etre renseigner.
                           </div>
-                          <div *ngIf=" form.get('nom').hasError('minlength')">
+                          <div *ngIf=" form.controls['nom']?.hasError('minlength')">
                             nom minimum 3 caracteres.
                           </div>
-                          <div *ngIf=" form.get('nom').hasError('maxlength')">
+                          <div *ngIf=" form.controls['nom']?.hasError('maxlength')">
                             nom maximum 20 caracteres.
                           </div>
                           <div *ngIf="dataNom.id>0">
@@ -66,31 +66,29 @@
                           </div>
                         </div>
                         <label for="adresse">Adresse</label>
-                        <input type="text" value="{{stock?.adresse}}" formControlName="adresse" id="adresse" placeholder="Saisir le adresse du centre" class="form-control">
-                        <div *ngIf="form.get('adresse').invalid && (form.dirty || form.touched)"class="alert alert-danger">
-                          <div *ngIf="form.get('adresse').hasError('required')">
+                        <input type="text" [ngModel]="stock?.adresse" name="adresse" id="adresse" class="form-control">
+                        <div *ngIf="form.controls['adresse']?.invalid && (form.dirty || form.touched)"class="alert alert-danger">
+                          <div *ngIf="form.controls['adresse']?.hasError('required')">
                             adresse doit etre renseigner.
                           </div>
-                          <div *ngIf=" form.get('adresse').hasError('minlength')">
+                          <div *ngIf=" form.controls['adresse']?.hasError('minlength')">
                             adresse minimum 5 caracteres.
                           </div>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <label for="centre">Centre</label>
-                        <select name="centre"  (blur)="onblur()" formControlName="centre" id="centre" class="form-control">
-                            <div *ngFor="let cent of centres">
-                                <option name="centre" value="{{cent?.id}}">{{cent?.nom}}/{{cent?.adresse}}</option>
-                            </div>
+                        <select name="idCentre"  [ngModel]="stock?.idCentre"  (blur)="onblur(form)" id="idCentre" class="form-control">
+                            <option *ngFor="let cent of centres" id="idCentre" value="{{cent?.id}}" >{{cent?.nom}}/{{cent?.adresse}}</option>
                         </select>
-                        <div *ngIf="(form.get('centre').invalid || dataNom.id>0) && (form.dirty || form.touched)"class="alert alert-danger">
-                          <div *ngIf="form.get('centre').hasError('required')">
+                        <div *ngIf="(form.controls['centre']?.invalid || dataNom) && (form.dirty || form.touched)"class="alert alert-danger">
+                          <div *ngIf="form.controls['centre']?.hasError('required')">
                             centre doit etre renseigner.
                           </div>
-                          <div *ngIf=" form.get('centre').hasError('minlength')">
+                          <div *ngIf=" form.controls['centre']?.hasError('minlength')">
                             centre minimum 8 caracteres.
                           </div>
-                          <div *ngIf="dataNom.id>0">
+                          <div *ngIf="dataNom">
                             Un centre portant ce nom existe deja
                           </div>
                         </div>

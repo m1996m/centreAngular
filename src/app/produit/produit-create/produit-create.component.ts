@@ -26,10 +26,10 @@ export class ProduitCreateComponent implements OnInit {
     this.form=this.fb.group({
       id:[this.produits.id],
       designation:[this.produits.designation,[Validators.required,Validators.minLength(3),Validators.maxLength(20)]],
-      adresse:[this.produits.content],
+      image:[this.produits.image],
       pua:[this.produits.PUA,[Validators.required,Validators.minLength(1),Validators.maxLength(7)]],
       puv:[this.produits.PUV,[Validators.required,Validators.minLength(1),Validators.maxLength(7)]],
-      type:[this.produits.type,[Validators.required,Validators.minLength(1),Validators.maxLength(1)]],
+      idTypeProduit:[this.produits.idTypeProduit,[Validators.required,Validators.minLength(1),Validators.maxLength(1)]],
     });
   }
 
@@ -38,7 +38,7 @@ export class ProduitCreateComponent implements OnInit {
     this.produitService.createproduit(this.form.value).subscribe((data:any)=>{this.router.navigate(['/produit'])});
   }
   onblur(){
-    this.dataNOm.id=0;
+    this.dataNOm=0;
     this.produitService.verificationNom(this.form.value).subscribe((data:any)=>{
       this.dataNOm=data;
     });

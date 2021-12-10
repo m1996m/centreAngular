@@ -53,24 +53,24 @@
                   <div class="row">
                     <div class="col-md-6">
                       <label for="produit">Produit</label>
-                      <select  ngModel (blur)="blurProduit(form)" class="form-control"  name="produit" id="produit" >
-                          <option *ngFor="let produit of produits;let i=index" value="{{i+1}}" id="produit">{{produit.designation}}{{produit.type.type}}</option>
+                      <select  ngModel class="form-control"  name="idP" id="produit" >
+                          <option *ngFor="let produit of produits;let i=index" value="{{i+1}}" id="produit">{{produit.designation}}({{produit.designationTypeProduit}})</option>
                       </select>
                       <label for="pua">PUA</label>
-                      <input type="text" [ngModel]="dataproduit?.PUA" name="pua" id="pua" class="form-control">
+                      <input type="text" [ngModel]="dataproduit?.PUA" name="PUA" id="pua" class="form-control">
                       <label for="puv">PUV</label>
-                      <input type="text" [ngModel]="dataproduit?.PUV" name="puv" id="puv" class="form-control">
+                      <input type="text" [ngModel]="dataproduit?.PUV" name="PUV" id="puv" class="form-control">
                     </div>
                     <div class="col-md-6">
                       <label for="quantite">quantite</label>
                       <input type="number" ngModel name="quantite" id="quantite" class="form-control">
                       <label for="fournisseur">Fournisseur</label>
-                      <select class="form-control"  ngModel name="fournisseur" id="fournisseur" >
-                          <option *ngFor="let fournisseur of fournisseurs" value="{{fournisseur.id}}" id="fournisseur">{{fournisseur.nom}}/{{fournisseur.adresse}}</option>
+                      <select class="form-control"  ngModel name="idf" id="fournisseur" >
+                          <option *ngFor="let fournisseur of fournisseurs" value="{{fournisseur.id}}" id="fournisseur">{{fournisseur.nom}}({{fournisseur.adresse}})</option>
                       </select>
                       <label for="stock">Stock</label>
-                      <select class="form-control" ngModel name="stock" id="stock" >
-                          <option *ngFor="let stock of stocks" value="{{stock?.id}}" id="stock">{{stock?.nom}}/{{stock?.adresse}}</option>
+                      <select class="form-control" ngModel name="ids" id="stock" >
+                          <option *ngFor="let stock of stocks" value="{{stock?.id}}" id="stock">{{stock?.nom}}({{stock?.adresse}})</option>
                       </select>
                     </div>
                   </div>

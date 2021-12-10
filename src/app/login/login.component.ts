@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
+import { GlobalService } from '../services/global.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   form:any;
-  constructor(private fb:FormBuilder,private userService:UserService,private router:Router) { }
+  constructor(private fb:FormBuilder,private globalService:GlobalService,private router:Router) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -22,7 +23,13 @@ export class LoginComponent implements OnInit {
     });
   }
   connexion(){
-    this.userService.connexion(this.form.value).subscribe((data:any)=>{this.router.navigate(['/center'])});
+    this.globalService.connexion(this.form.value).subscribe((data:any)=>{
+      if(data){
+        localStorage.setItem('token',data.token);
+        this.globalService.isAuth=true;
+      }
+      this.router.navigate(['/centre'])
+    });
   }
 
 }

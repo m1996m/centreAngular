@@ -7,7 +7,7 @@ import { ProduitModel } from '../Models/produit-model.Model';
 })
 export class ProduitService {
 
-  global = 'http://127.0.0.1:8000/';
+  lien = 'http://127.0.0.1:8000/';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -18,30 +18,30 @@ export class ProduitService {
   constructor(private http:HttpClient ) { }
 
   getAllproduit() {
-    return this.http.get(this.global+'produit');
+    return this.http.get(this.lien+'produit');
   }
   createproduit(produit:ProduitModel) {
-    return this.http.post(this.global+'produit/new',produit);
+    return this.http.post(this.lien+'produit/new',produit);
   }
 
   getSearch(produit:any) {
-    return this.http.post(this.global+'rechercherProduitDesignationType',produit);
+    return this.http.post(this.lien+'rechercherProduitDesignationType',produit);
   }
 
   getSearchID(produit:any) {
-    return this.http.post(this.global+'rechercherProduitID',produit);
+    return this.http.post(this.lien+'rechercherProduitID',produit);
   }
 
   getOneproduit(id:number){
-    return this.http.get(this.global+'getOneProduit/'+id);
+    return this.http.get(this.lien+'getOneProduit/'+id);
   }
   editproduit(id:number, produit:ProduitModel){
-    return this.http.post(this.global+'getAndOrEditProduit/'+id,produit);
+    return this.http.post(this.lien+'getAndEditProduit/'+id,produit);
   }
   verificationNom(produit:any){
-    return this.http.post(this.global+'rechercherProduit',produit);
+    return this.http.post(this.lien+'rechercherProduit',produit);
   }
   deleteproduit(id:number){
-    return this.http.delete(this.global+'getDeleteProduit/'+id);
+    return this.http.delete(this.lien+'getDeleteProduit/'+id);
   }
 }

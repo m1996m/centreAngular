@@ -5,11 +5,11 @@ import { StockModel } from './stock-model.Model';
 export class ProduitStockModel {
     constructor(
         public id:number, 
-        public pua:number,
-        public puv:number,
+        public PUA:number,
+        public PUV:number,
         public quantite:number,
         public total?:number,
-        public type?:string,
+        public designationTypeProduit?:string,
         public noms?:string,
         public nomUser?:string,
         public prenomUser?:string,

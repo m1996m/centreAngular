@@ -36,7 +36,7 @@ export class ProduitStockService {
     return this.http.get(this.global+'getOneProduitStock/'+id);
   }
   editProduitStock(id:number, produitStock:ProduitStockModel){
-    return this.http.post(this.global+'getAndOrEditProduitStock/'+id,produitStock);
+    return this.http.post(this.global+'getAndEditProduitStock/'+id,produitStock);
   }
   deleteProduitStock(id:number){
     return this.http.delete(this.global+'getDeleteProduitStock/'+id);

@@ -7,7 +7,10 @@ export class ClientModel {
         public content:string,
         public tel:string,
         public dateNaissance:string,
-        public slug:string,
-        public image:string,
+        public nomCentre?:string,
+        public idCentre?:number,
+        public slug?:string,
+        public image?:string,
+        public idClient?:number,
     ){}
 }
